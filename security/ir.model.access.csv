@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_type,shop_phone.type,shop_phone.model_type,base.group_user,1,1,1,1
+access_accessories,shop_phone.accessories,shop_phone.model_accessories,base.group_user,1,1,1,1
+access_electricity,shop_phone.electricity,shop_phone.model_electricity,base.group_user,1,1,1,1
+access_internal,shop_phone.internal,shop_phone.model_internal,base.group_user,1,1,1,1
+access_mobiles,shop_phone.mobiles,shop_phone.model_mobiles,base.group_user,1,1,1,1
+access_petrine_work,shop_phone.petrine_work,shop_phone.model_petrine_work,base.group_user,1,1,1,1
+access_sales,shop_phone.sales,shop_phone.model_sales,base.group_user,1,1,1,1
+access_sales_accessories,shop_phone.sales_accessories,shop_phone.model_sales_accessories,base.group_user,1,1,1,1
+access_sales_electricity,shop_phone.sales_electricity,shop_phone.model_sales_electricity,base.group_user,1,1,1,1
+access_sales_internal,shop_phone.sales_internal,shop_phone.model_sales_internal,base.group_user,1,1,1,1
+access_sales_mobiles,shop_phone.sales_mobiles,shop_phone.model_sales_mobiles,base.group_user,1,1,1,1
+access_sales_petrine_work,shop_phone.sales_petrine_work,shop_phone.model_sales_petrine_work,base.group_user,1,1,1,1

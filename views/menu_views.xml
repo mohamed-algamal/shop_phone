@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+    <data>
+        <menuitem id="shop_phone_menu"
+                  name="Shop phone"
+                  web_icon="om_hospital,static/description/icon.png"
+                  sequence="0"/>
+
+        <menuitem id="type_menu"
+                  name="Type"
+                  parent="shop_phone_menu"
+                  sequence="0"/>
+
+        <menuitem id="sales_menu"
+                  name="Sales"
+                  parent="shop_phone_menu"
+                  sequence="10"/>
+    </data>
+</odoo>

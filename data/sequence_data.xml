@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_accessories" model="ir.sequence"> <!-- id anything you went -->
+        <field name="name">accessories</field> <!-- name anything you went -->
+        <field name="code">accessories</field> <!-- code anything you went -->
+        <field name="prefix">AC</field>
+        <field name="padding">4</field> <!-- many number after prefix -->
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_internal" model="ir.sequence"> <!-- id anything you went -->
+        <field name="name">Internal</field> <!-- name anything you went -->
+        <field name="code">internal</field> <!-- code anything you went -->
+        <field name="prefix">IN</field>
+        <field name="padding">4</field> <!-- many number after prefix -->
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_electricity" model="ir.sequence"> <!-- id anything you went -->
+        <field name="name">Electricity</field> <!-- name anything you went -->
+        <field name="code">electricity</field> <!-- code anything you went -->
+        <field name="prefix">EL</field>
+        <field name="padding">4</field> <!-- many number after prefix -->
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_mobiles" model="ir.sequence"> <!-- id anything you went -->
+        <field name="name">Mobiles</field> <!-- name anything you went -->
+        <field name="code">mobiles</field> <!-- code anything you went -->
+        <field name="prefix">M</field>
+        <field name="padding">4</field> <!-- many number after prefix -->
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_petrine_work" model="ir.sequence"> <!-- id anything you went -->
+        <field name="name">Petrine Work</field> <!-- name anything you went -->
+        <field name="code">petrine_work</field> <!-- code anything you went -->
+        <field name="prefix">PW</field>
+        <field name="padding">4</field> <!-- many number after prefix -->
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_sales" model="ir.sequence"> <!-- id anything you went -->
+        <field name="name">Sales</field> <!-- name anything you went -->
+        <field name="code">sales</field> <!-- code anything you went -->
+        <field name="prefix">S</field>
+        <field name="padding">5</field> <!-- many number after prefix -->
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

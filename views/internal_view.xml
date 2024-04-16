@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+       <!-- the tree view = list view -->
+    <record id="view_internal_tree" model="ir.ui.view">
+        <field name="name">internal.tree</field>
+        <field name="model">internal</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="check_count">
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="internal"/>
+                <field name="price"/>
+                <field name="count"/>
+                <field name="check_count" column_invisible="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- the form view -->
+    <record id="view_internal_form" model="ir.ui.view">
+        <field name="name">internal.form</field>
+        <field name="model">internal</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="internal"/>
+                            <field name="price"/>
+                            <field name="count"/>
+                            <field name="check_count" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="ref"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- the search view -->
+    <record id="view_internal_search" model="ir.ui.view">
+        <field name="name">internal.search</field>
+        <field name="model">internal</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name"
+                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>
+                <field name="ref"/>
+                <field name="internal"/>
+                <field name="price"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_internal" string="Internal" context="{'group_by':'internal'}"/>
+                </group>
+                <!-- create search-panel -->
+                <searchpanel>
+                    <field name="internal" icon="" select="multi" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    
+    <data>
+        <!--  window action  -->
+        <record id="action_internal" model="ir.actions.act_window">
+            <field name="name">Internal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">internal</field>
+            <field name="context">{'search_default_group_by_internal': 1}</field>
+            <!-- domain for condition for make filter many record-->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>
+                    create new record internal
+                </p>
+            </field>
+        </record>
+    </data>
+
+    <data>
+        <!-- the submenu -->
+        <menuitem id="internal_menu"
+                  name="Internal"
+                  parent="type_menu"
+                  action="action_internal"
+                  sequence="20"/>
+    </data>
+</odoo>

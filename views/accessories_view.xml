@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- the tree view = list view -->
+    <record id="view_accessories_tree" model="ir.ui.view">
+        <field name="name">accessories.tree</field>
+        <field name="model">accessories</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="check_count">
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="accessories"/>
+                <field name="price"/>
+                <field name="count"/>
+                <field name="check_count" column_invisible="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- the form view -->
+    <record id="view_accessories_form" model="ir.ui.view">
+        <field name="name">accessories.form</field>
+        <field name="model">accessories</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="accessories"/>
+                            <field name="price"/>
+                            <field name="count"/>
+                            <field name="check_count" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="ref"/>
+                            <!--<button name="action_test" string="test" class="oe_highlight" type="object"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- the search view -->
+    <record id="view_accessories_search" model="ir.ui.view">
+        <field name="name">accessories.search</field>
+        <field name="model">accessories</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name"
+                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>
+                <field name="ref"/>
+                <field name="accessories"/>
+                <field name="price"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_accessories" string="Accessories" context="{'group_by':'accessories'}"/>
+                </group>
+                <!-- create search-panel -->
+                <searchpanel>
+                    <field name="accessories" icon="" select="multi" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <data>
+        <!-- window action -->
+        <record id="action_accessories" model="ir.actions.act_window">
+            <field name="name">accessories</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">accessories</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_group_by_accessories': 1}</field>
+            <field name="help" type="html">
+                <p>
+                    create the module accessories
+                </p>
+            </field>
+        </record>
+    </data>
+
+    <data>
+        <!-- the submenu -->
+        <menuitem id="accessories_menu"
+                  name="Accessories"
+                  parent="type_menu"
+                  action="action_accessories"
+                  sequence="0"/>
+    </data>
+</odoo>

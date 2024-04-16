@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- the tree view = list view -->
+    <record id="view_sales_order_tree" model="ir.ui.view">
+        <field name="name">sales.tree</field>
+        <field name="model">sales</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ref"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- the form view -->
+    <record id="view_sales_order_form" model="ir.ui.view">
+        <field name="name">sales.form</field>
+        <field name="model">sales</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <div>
+                                <h2>
+                                    <label for="ref" string="Reference"/>
+                                    <field name="ref"/>
+                                </h2>
+                            </div>
+                        </group>
+                        <group>
+                            <div>
+                                <h3>
+                                    <label for="total" string="Total"/>
+                                    <field name="total"/>
+                                </h3>
+                            </div>
+                            <button name="action_test" string="test" class="bg-black" type="object"/>
+                        </group>
+                        <notebook>
+                            <page string="Sales Accessories" name="sales_accessories">
+                                <field name="sales_accessories_ids">
+                                    <tree editable="bottom">
+                                        <field name="accessories_id"/>
+                                        <field name="count"/>
+                                        <field name="count_found"/>
+                                        <field name="price"/>
+                                        <field name="sup_total"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="count_found"/>
+                                            </group>
+                                            <group>
+                                                <field name="count"/>
+                                                <field name="price"/>
+                                                <field name="sup_total"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+
+                            <page string="Sales Electricity" name="sales_electricity">
+                                <field name="sales_electricity_ids">
+                                    <tree editable="bottom">
+                                        <field name="electricity_id"/>
+                                        <field name="count"/>
+                                        <field name="count_found"/>
+                                        <field name="price"/>
+                                        <field name="sup_total"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="count_found"/>
+                                            </group>
+                                            <group>
+                                                <field name="count"/>
+                                                <field name="price"/>
+                                                <field name="sup_total"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Sales Internal" name="sales_internal">
+                                <field name="sales_internal_ids">
+                                    <tree editable="bottom">
+                                        <field name="internal_id"/>
+                                        <field name="count"/>
+                                        <field name="count_found"/>
+                                        <field name="price"/>
+                                        <field name="sup_total"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="count_found"/>
+                                            </group>
+                                            <group>
+                                                <field name="count"/>
+                                                <field name="price"/>
+                                                <field name="sup_total"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Sales Mobiles" name="sales_mobiles">
+                                <field name="sales_mobiles_ids">
+                                    <tree editable="bottom">
+                                        <field name="mobiles_id"/>
+                                        <field name="count"/>
+                                        <field name="count_found"/>
+                                        <field name="price"/>
+                                        <field name="sup_total"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="count_found"/>
+                                            </group>
+                                            <group>
+                                                <field name="count"/>
+                                                <field name="price"/>
+                                                <field name="sup_total"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Sales Petrine Work" name="sales_petrine_work">
+                                <field name="sales_petrine_work_ids">
+                                    <tree editable="bottom">
+                                        <field name="petrine_work_id"/>
+                                        <field name="count"/>
+                                        <field name="count_found"/>
+                                        <field name="price"/>
+                                        <field name="sup_total"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="count_found"/>
+                                            </group>
+                                            <group>
+                                                <field name="count"/>
+                                                <field name="price"/>
+                                                <field name="sup_total"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--     the search view -->
+    <!--    <record id="view_sales_order_search" model="ir.ui.view">-->
+    <!--        <field name="name">sales.search</field>-->
+    <!--        <field name="model">sales</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <search>-->
+    <!--                <field name="name" string="Name"-->
+    <!--                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>-->
+    <!--                <field name="ref"/>-->
+    <!--                <field name="accessories"/>-->
+    <!--                <field name="price"/>-->
+    <!--                <group expand="0" string="Group By">-->
+    <!--                    <filter name="group_by_accessories" string="Accessories" context="{'group_by':'accessories'}"/>-->
+    <!--                </group>-->
+    <!--                &lt;!&ndash; create search-panel &ndash;&gt;-->
+    <!--                <searchpanel>-->
+    <!--                    <field name="accessories" icon="" select="multi" enable_counters="1"/>-->
+    <!--                </searchpanel>-->
+    <!--            </search>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <data>
+        <!-- window action -->
+        <record id="action_sales_order" model="ir.actions.act_window">
+            <field name="name">Sales</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sales</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p>
+                    create the record sales
+                </p>
+            </field>
+        </record>
+    </data>
+
+    <data>
+        <!-- the submenu -->
+        <menuitem id="sales_order_menu"
+                  name="Sales"
+                  parent="sales_menu"
+                  action="action_sales_order"
+                  sequence="0"/>
+    </data>
+</odoo>

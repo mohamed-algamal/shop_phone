@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- create report action -->
+    <record id="report_products" model="ir.actions.report">
+        <field name="name"></field>  <!-- any name you went -->
+        <field name="model"></field>  <!-- the medal that adds this report in it -->
+        <field name="report_type">qweb-pdf</field>  <!-- type of report -->
+        <field name="report_name">om_hospital.report_patient_id_card</field>
+        <field name="report_file">om_hospital.report_patient_id_card</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

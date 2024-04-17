@@ -5,9 +5,11 @@
         <field name="name">sales.tree</field>
         <field name="model">sales</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-danger="state == 'prepare'" decoration-success="state == 'done'">
                 <field name="ref"/>
                 <field name="total"/>
+                <field name="state" widget="badge" decoration-danger="state == 'prepare'"
+                       decoration-success="state == 'done'"/>
             </tree>
         </field>
     </record>
@@ -18,14 +20,21 @@
         <field name="model">sales</field>
         <field name="arch" type="xml">
             <form>
+                <!-- create statusbar -->
+                <header>
+                    <!--options="{'clickable': '1'}" give you ability for click in the statusbar-->
+                    <field name="state" widget="statusbar" nolabel="1"/>
+                    <button name="action_done" string="Done" type="object" class="oe_highlight" icon=""
+                            data-hotkey="z" invisible="state == 'done'" confirm="Are you sure for make done?"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
                             <div>
-                                <h2>
+                                <h3>
                                     <label for="ref" string="Reference"/>
                                     <field name="ref"/>
-                                </h2>
+                                </h3>
                             </div>
                         </group>
                         <group>
@@ -35,13 +44,14 @@
                                     <field name="total"/>
                                 </h3>
                             </div>
-                            <button name="action_test" string="test" class="bg-black" type="object"/>
+                            <field name="state" invisible="1"/>
                         </group>
                         <notebook>
                             <page string="Sales Accessories" name="sales_accessories">
                                 <field name="sales_accessories_ids">
                                     <tree editable="bottom">
                                         <field name="accessories_id"/>
+                                        <field name="category"/>
                                         <field name="count"/>
                                         <field name="count_found"/>
                                         <field name="price"/>
@@ -50,6 +60,8 @@
                                     <form>
                                         <group>
                                             <group>
+                                                <field name="accessories_id"/>
+                                                <field name="category"/>
                                                 <field name="count_found"/>
                                             </group>
                                             <group>
@@ -66,6 +78,7 @@
                                 <field name="sales_electricity_ids">
                                     <tree editable="bottom">
                                         <field name="electricity_id"/>
+                                        <field name="category"/>
                                         <field name="count"/>
                                         <field name="count_found"/>
                                         <field name="price"/>
@@ -74,6 +87,8 @@
                                     <form>
                                         <group>
                                             <group>
+                                                <field name="electricity_id"/>
+                                                <field name="category"/>
                                                 <field name="count_found"/>
                                             </group>
                                             <group>
@@ -89,6 +104,7 @@
                                 <field name="sales_internal_ids">
                                     <tree editable="bottom">
                                         <field name="internal_id"/>
+                                        <field name="category"/>
                                         <field name="count"/>
                                         <field name="count_found"/>
                                         <field name="price"/>
@@ -97,6 +113,8 @@
                                     <form>
                                         <group>
                                             <group>
+                                                <field name="internal_id"/>
+                                                <field name="category"/>
                                                 <field name="count_found"/>
                                             </group>
                                             <group>
@@ -112,6 +130,7 @@
                                 <field name="sales_mobiles_ids">
                                     <tree editable="bottom">
                                         <field name="mobiles_id"/>
+                                        <field name="category"/>
                                         <field name="count"/>
                                         <field name="count_found"/>
                                         <field name="price"/>
@@ -120,6 +139,8 @@
                                     <form>
                                         <group>
                                             <group>
+                                                <field name="mobiles_id"/>
+                                                <field name="category"/>
                                                 <field name="count_found"/>
                                             </group>
                                             <group>
@@ -135,6 +156,7 @@
                                 <field name="sales_petrine_work_ids">
                                     <tree editable="bottom">
                                         <field name="petrine_work_id"/>
+                                        <field name="category"/>
                                         <field name="count"/>
                                         <field name="count_found"/>
                                         <field name="price"/>
@@ -143,6 +165,8 @@
                                     <form>
                                         <group>
                                             <group>
+                                                <field name="petrine_work_id"/>
+                                                <field name="category"/>
                                                 <field name="count_found"/>
                                             </group>
                                             <group>
@@ -157,6 +181,12 @@
                         </notebook>
                     </group>
                 </sheet>
+                <!-- chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/> <!-- inherit = ['mail.thread'] -->
+                    <field name="activity_ids"/> <!-- inherit = ['mail.activity.mixin'] -->
+                    <field name="message_ids"/> <!-- inherit = ['mail.thread'] -->
+                </div>
             </form>
         </field>
     </record>

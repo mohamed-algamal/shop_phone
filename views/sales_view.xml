@@ -8,6 +8,7 @@
             <tree decoration-danger="state == 'prepare'" decoration-success="state == 'done'">
                 <field name="ref"/>
                 <field name="total"/>
+                <field name="is_done" column_invisible="1"/>
                 <field name="state" widget="badge" decoration-danger="state == 'prepare'"
                        decoration-success="state == 'done'"/>
             </tree>
@@ -45,6 +46,7 @@
                                 </h3>
                             </div>
                             <field name="state" invisible="1"/>
+                            <field name="is_done" invisible="1"/>
                         </group>
                         <notebook>
                             <page string="Sales Accessories" name="sales_accessories">
@@ -53,7 +55,7 @@
                                         <field name="accessories_id"/>
                                         <field name="category"/>
                                         <field name="count"/>
-                                        <field name="count_found"/>
+                                        <field name="count_found" column_invisible="parent.is_done, '==', True"/>
                                         <field name="price"/>
                                         <field name="sup_total"/>
                                     </tree>
@@ -62,7 +64,7 @@
                                             <group>
                                                 <field name="accessories_id"/>
                                                 <field name="category"/>
-                                                <field name="count_found"/>
+                                                <field name="count_found" column_invisible="parent.is_done, '==', True"/>
                                             </group>
                                             <group>
                                                 <field name="count"/>

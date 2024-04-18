@@ -10,6 +10,7 @@ class Sales(models.Model):
 
     ref = fields.Char(string='Reference', readonly=True)
     total = fields.Float(string='Total', compute='_compute_total', readonly=True, store=True)
+    is_done = fields.Boolean(string='Is Done', readonly=True)
 
     sales_accessories_ids = fields.One2many('sales.accessories', 'sales_id', string='Sales Accessories')
     sales_electricity_ids = fields.One2many('sales.electricity', 'sales_id', string='Sales Electricity')
@@ -38,38 +39,48 @@ class Sales(models.Model):
                 total += record.sup_total
         self.total = total
 
-    def check_duplicates(self, list_id):
-        if len(list_id) != len(set(list_id)):
-            raise ValidationError(_("You choose the field two time."))
-
     @api.model
     def write(self, vals):
         if 'sales_accessories_ids' in vals:
             for rec in vals['sales_accessories_ids']:
-                if self.env['sales.accessories'].search([('accessories_id', '=', rec[2].get('accessories_id'))]):
-                    raise ValidationError(_("You choose the field two time."))
+                if len(rec) == 3:
+                    for record in self.sales_accessories_ids:
+                        if record.accessories_id.id == rec[2].get('accessories_id'):
+                            raise ValidationError(_("You choose the field two time."))
 
         if 'sales_electricity_ids' in vals:
             for rec in vals['sales_electricity_ids']:
-                if self.env['sales.electricity'].search([('electricity_id', '=', rec[2].get('electricity_id'))]):
-                    raise ValidationError(_("You choose the field two time."))
+                if len(rec) == 3:
+                    for record in self.sales_electricity_ids:
+                        if record.electricity_id.id == rec[2].get('electricity_id'):
+                            raise ValidationError(_("You choose the field two time."))
 
         if 'sales_internal_ids' in vals:
             for rec in vals['sales_internal_ids']:
-                if self.env['sales.internal'].search([('internal_id', '=', rec[2].get('internal_id'))]):
-                    raise ValidationError(_("You choose the field two time."))
+                if len(rec) == 3:
+                    for record in self.sales_internal_ids:
+                        if record.internal_id.id == rec[2].get('internal_id'):
+                            raise ValidationError(_("You choose the field two time."))
 
         if 'sales_mobiles_ids' in vals:
             for rec in vals['sales_mobiles_ids']:
-                if self.env['sales.mobiles'].search([('mobiles_id', '=', rec[2].get('mobiles_id'))]):
-                    raise ValidationError(_("You choose the field two time."))
+                if len(rec) == 3:
+                    for record in self.sales_mobiles_ids:
+                        if record.mobiles_id.id == rec[2].get('mobiles_id'):
+                            raise ValidationError(_("You choose the field two time."))
 
         if 'sales_petrine_work_ids' in vals:
             for rec in vals['sales_petrine_work_ids']:
-                if self.env['sales.petrine.work'].search([('petrine_work_id', '=', rec[2].get('petrine_work_id'))]):
-                    raise ValidationError(_("You choose the field two time."))
+                if len(rec) == 3:
+                    for record in self.sales_petrine_work_ids:
+                        if record.petrine_work_id.id == rec[2].get('petrine_work_id'):
+                            raise ValidationError(_("You choose the field two time."))
 
         return super(Sales, self).write(vals)
+
+    def check_duplicates(self, list_id):
+        if len(list_id) != len(set(list_id)):
+            raise ValidationError(_("You choose the field two time."))
 
     @api.model
     def create(self, vals):
@@ -107,16 +118,54 @@ class Sales(models.Model):
         return super(Sales, self).create(vals)
 
     def unlink(self):
-        print(self)
         for rec in self:
             if rec.state == "done":
                 raise ValidationError(_("You can't delete done records."))
         return super(Sales, self).unlink()
 
+    def _check_count(self, rec):
+        if rec.count > rec.count_found:
+            raise ValidationError(_("The number of product don't found."))
+        if not rec.count:
+            raise ValidationError(_("You should inter the number above zero in count field."))
+
     def action_done(self):
+        for rec in self.sales_accessories_ids:
+            self._check_count(rec)
+
+        for rec in self.sales_electricity_ids:
+            self._check_count(rec)
+
+        for rec in self.sales_mobiles_ids:
+            self._check_count(rec)
+
+        for rec in self.sales_internal_ids:
+            self._check_count(rec)
+
+        for rec in self.sales_petrine_work_ids:
+            self._check_count(rec)
+
+        for rec in self.sales_accessories_ids:
+            rec.accessories_id.count -= rec.count
+
+        for rec in self.sales_electricity_ids:
+            rec.electricity_id.count -= rec.count
+
+        for rec in self.sales_mobiles_ids:
+            rec.mobiles_id.count -= rec.count
+
+        for rec in self.sales_internal_ids:
+            rec.internal_id.count -= rec.count
+
+        for rec in self.sales_petrine_work_ids:
+            rec.petrine_work_id.count -= rec.count
+
         for rec in self:
             rec.state = "done"
-        self.message_post(body=f'The sale is done with total {self.total}.', message_type='comment', subtype_xmlid='mail.mt_note',)
+            rec.is_done = True
+
+        self.message_post(body=f'The sale is done with total {self.total}.', message_type='comment',
+                          subtype_xmlid='mail.mt_note', )
 
 
 class SalesAccessories(models.Model):

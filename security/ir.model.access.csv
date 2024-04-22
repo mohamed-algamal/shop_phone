@@ -11,3 +11,4 @@ access_sales_electricity,shop_phone.sales_electricity,shop_phone.model_sales_ele
 access_sales_internal,shop_phone.sales_internal,shop_phone.model_sales_internal,base.group_user,1,1,1,1
 access_sales_mobiles,shop_phone.sales_mobiles,shop_phone.model_sales_mobiles,base.group_user,1,1,1,1
 access_sales_petrine_work,shop_phone.sales_petrine_work,shop_phone.model_sales_petrine_work,base.group_user,1,1,1,1
+access_maintenance,shop_phone.maintenance,shop_phone.model_maintenance,base.group_user,1,1,1,1

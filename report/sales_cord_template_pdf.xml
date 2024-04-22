@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="report_sales_card_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o"><!--if this is an outside layout, each record print on a separate page -->
+                <t t-call="web.external_layout"><!-- <t t-call="web.internal_layout" <t t-call="web.basic_layout" -->
+                    <!--<t t-foreach="docs" t-as="o"> if this is an inside layout will print record details in one page-->
+                    <div class="page">
+                        <div style="text-align:center;">
+                            <h1>Mohamed algamal</h1>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

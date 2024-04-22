@@ -145,6 +145,10 @@ class Sales(models.Model):
         for rec in self.sales_petrine_work_ids:
             self._check_count(rec)
 
+        for rec in self:
+            if rec.total == 0:
+                raise ValidationError(_("Total field shouldn't be equal zero."))
+
         for rec in self.sales_accessories_ids:
             rec.accessories_id.count -= rec.count
 

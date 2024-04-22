@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- create report action -->
-    <record id="report_products" model="ir.actions.report">
-        <field name="name"></field>  <!-- any name you went -->
-        <field name="model"></field>  <!-- the medal that adds this report in it -->
-        <field name="report_type">qweb-pdf</field>  <!-- type of report -->
-        <field name="report_name">om_hospital.report_patient_id_card</field>
-        <field name="report_file">om_hospital.report_patient_id_card</field>
-        <field name="binding_model_id" ref="model_hospital_patient"/>
-        <field name="binding_type">report</field>
+    <!-- create paper format-->
+    <record id="paperformat_sales_card" model="report.paperformat">
+        <field name="name">Sales Card Paper Format</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="page_height">50</field>
+        <field name="page_width">50</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">32</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
     </record>
+
+    <!-- create report action -->
+    <record id="report_sales_card" model="ir.actions.report">
+        <field name="name">Sales Card</field>  <!-- any name you went -->
+        <field name="model">sales</field>  <!-- the medal that adds this report in it -->
+        <field name="report_type">qweb-pdf</field>  <!-- type of report -->
+        <field name="report_name">shop_phone.report_sales_card_id</field>
+        <field name="report_file">shop_phone.report_sales_card_id</field>
+        <field name="binding_model_id" ref="model_sales"/> <!-- where you will add the report -->
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="shop_phone.paperformat_sales_card"/>
+    </record>
+
+
 </odoo>

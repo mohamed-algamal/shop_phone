@@ -25,7 +25,7 @@
                 <header>
                     <!--options="{'clickable': '1'}" give you ability for click in the statusbar-->
                     <field name="state" widget="statusbar" nolabel="1"/>
-                    <button name="action_done" string="Done" type="object" class="oe_highlight" icon=""
+                    <button name="action_done" string="Done" type="object" class="oe_highlight" icon="fa-check"
                             data-hotkey="z" invisible="state == 'done'" confirm="Are you sure for make done?"/>
                 </header>
                 <sheet>
@@ -50,7 +50,7 @@
                         </group>
                         <notebook>
                             <page string="Sales Accessories" name="sales_accessories">
-                                <field name="sales_accessories_ids">
+                                <field name="sales_accessories_ids" readonly="is_done">
                                     <tree editable="bottom">
                                         <field name="accessories_id"/>
                                         <field name="category"/>
@@ -64,7 +64,8 @@
                                             <group>
                                                 <field name="accessories_id"/>
                                                 <field name="category"/>
-                                                <field name="count_found" column_invisible="parent.is_done, '==', True"/>
+                                                <field name="count_found"
+                                                       column_invisible="parent.is_done, '==', True"/>
                                             </group>
                                             <group>
                                                 <field name="count"/>
@@ -77,7 +78,7 @@
                             </page>
 
                             <page string="Sales Electricity" name="sales_electricity">
-                                <field name="sales_electricity_ids">
+                                <field name="sales_electricity_ids" readonly="is_done">
                                     <tree editable="bottom">
                                         <field name="electricity_id"/>
                                         <field name="category"/>
@@ -103,7 +104,7 @@
                                 </field>
                             </page>
                             <page string="Sales Internal" name="sales_internal">
-                                <field name="sales_internal_ids">
+                                <field name="sales_internal_ids" readonly="is_done">
                                     <tree editable="bottom">
                                         <field name="internal_id"/>
                                         <field name="category"/>
@@ -129,7 +130,7 @@
                                 </field>
                             </page>
                             <page string="Sales Mobiles" name="sales_mobiles">
-                                <field name="sales_mobiles_ids">
+                                <field name="sales_mobiles_ids" readonly="is_done">
                                     <tree editable="bottom">
                                         <field name="mobiles_id"/>
                                         <field name="category"/>
@@ -155,7 +156,7 @@
                                 </field>
                             </page>
                             <page string="Sales Petrine Work" name="sales_petrine_work">
-                                <field name="sales_petrine_work_ids">
+                                <field name="sales_petrine_work_ids" readonly="is_done">
                                     <tree editable="bottom">
                                         <field name="petrine_work_id"/>
                                         <field name="category"/>
@@ -193,27 +194,20 @@
         </field>
     </record>
 
-    <!--     the search view -->
-    <!--    <record id="view_sales_order_search" model="ir.ui.view">-->
-    <!--        <field name="name">sales.search</field>-->
-    <!--        <field name="model">sales</field>-->
-    <!--        <field name="arch" type="xml">-->
-    <!--            <search>-->
-    <!--                <field name="name" string="Name"-->
-    <!--                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>-->
-    <!--                <field name="ref"/>-->
-    <!--                <field name="accessories"/>-->
-    <!--                <field name="price"/>-->
-    <!--                <group expand="0" string="Group By">-->
-    <!--                    <filter name="group_by_accessories" string="Accessories" context="{'group_by':'accessories'}"/>-->
-    <!--                </group>-->
-    <!--                &lt;!&ndash; create search-panel &ndash;&gt;-->
-    <!--                <searchpanel>-->
-    <!--                    <field name="accessories" icon="" select="multi" enable_counters="1"/>-->
-    <!--                </searchpanel>-->
-    <!--            </search>-->
-    <!--        </field>-->
-    <!--    </record>-->
+    <record id="view_sales_order_search" model="ir.ui.view">
+        <field name="name">sales.search</field>
+        <field name="model">sales</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="ref"/>
+                <field name="total"/>
+                <filter name="filter_is_done" string="Done" domain="[('is_done','=',True)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_state" string="State" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
     <data>
         <!-- window action -->

@@ -15,5 +15,10 @@
                   name="Sales"
                   parent="shop_phone_menu"
                   sequence="10"/>
+
+        <menuitem id="maintenance_menu"
+                  name="Maintenance"
+                  parent="shop_phone_menu"
+                  sequence="20"/>
     </data>
 </odoo>

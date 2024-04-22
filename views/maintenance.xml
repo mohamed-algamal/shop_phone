@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- the tree view = list view -->
+    <record id="view_maintenance_tree" model="ir.ui.view">
+        <field name="name">maintenance.tree</field>
+        <field name="model">maintenance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ref"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- the form view -->
+    <record id="view_maintenance_form" model="ir.ui.view">
+        <field name="name">maintenance.form</field>
+        <field name="model">maintenance</field>
+        <field name="arch" type="xml">
+            <form>
+                <!-- create statusbar -->
+                <header>
+                    <!--options="{'clickable': '1'}" give you ability for click in the statusbar-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,prepare,done" nolabel="1"/>
+                    <button name="action_draft" string="Draft" type="object" class="oe_highlight" data-hotkey="r"
+                            invisible="state != 'cancel'"/>
+                    <button name="action_prepare" string="Prepare" type="object" class="oe_highlight" data-hotkey="m"
+                            invisible="state != 'draft'"/>
+                    <button name="action_done" string="Done" type="object" class="oe_highlight" icon="fa-check"
+                            data-hotkey="z" invisible="state in ['done', 'draft', 'cancel']" confirm="Are you sure for make done?"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" icon="fa-times"
+                            data-hotkey="n" invisible="state in ['done', 'cancel']" confirm="Are you sure for make cancel?"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h2>
+                            <field name="ref" readonly="1"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="price"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+                <!-- chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/> <!-- inherit = ['mail.thread'] -->
+                    <field name="activity_ids"/> <!-- inherit = ['mail.activity.mixin'] -->
+                    <field name="message_ids"/> <!-- inherit = ['mail.thread'] -->
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- the search view -->
+    <!--    <record id="view_maintenance_search" model="ir.ui.view">-->
+    <!--        <field name="name">maintenance.search</field>-->
+    <!--        <field name="model">maintenance</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <search>-->
+    <!--                <field name="name" string="Name"-->
+    <!--                       filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>-->
+    <!--                <field name="ref"/>-->
+    <!--                <field name="mobiles"/>-->
+    <!--                <field name="price"/>-->
+    <!--                <group expand="0" string="Group By">-->
+    <!--                    <filter name="group_by_mobiles" string="Mobiles" context="{'group_by':'mobiles'}"/>-->
+    <!--                </group>-->
+    <!--                &lt;!&ndash; create search-panel &ndash;&gt;-->
+    <!--                <searchpanel>-->
+    <!--                    <field name="mobiles" icon="" select="multi" enable_counters="1"/>-->
+    <!--                </searchpanel>-->
+    <!--            </search>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <data>
+        <!--  window action  -->
+        <record id="action_maintenance" model="ir.actions.act_window">
+            <field name="name">Maintenance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">maintenance</field>
+            <field name="context">{}</field>
+            <!-- domain for condition for make filter many record-->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>
+                    create new record maintenance
+                </p>
+            </field>
+        </record>
+    </data>
+
+    <data>
+        <!-- the submenu -->
+        <menuitem id="phone_maintenance_menu"
+                  name="Maintenance"
+                  parent="maintenance_menu"
+                  action="action_maintenance"
+                  sequence="0"/>
+    </data>
+</odoo>

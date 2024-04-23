@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 {
     'name': "shop phone management",
     'summary': "this is for shop phone management",
@@ -20,8 +21,8 @@
         'views/petrine_work.xml',
         'views/sales_view.xml',
         'views/maintenance.xml',
-        'report/report.xml',
         'report/sales_cord_template_pdf.xml',
+        'report/report.xml',
     ],
     'demo': [],
     'excludes': [''],

@@ -16,15 +16,20 @@
             </t>
         </t>
         <div class="header">
-            <div class="text-center" style="border-bottom: 1px solid black;">
-                <p t-out="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%y %H: %M')"/>
+            <div class="row" style="border-bottom: 1px solid black;">
+                <div class="col-6">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" height="80" width="80"/>
+                </div>
+                <div class="col-6 text-end">
+                    <h3>المهندس فون</h3>
+                    <h5>اسد الباغات</h5>
+                </div>
             </div>
         </div>
 
         <div class="article o_report_layout_standard">
             <t t-out="0"/>
         </div>
-
         <div class="footer o_standard_footer">
             <div class="text-center" style="border-top: 1px solid black;">
                 <ul class="list_inline mb-4">
@@ -36,14 +41,54 @@
 
     <template id="report_sales_card_id">
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="shop_phone.custom_header_footer_sales_report">
-                    <div class="page">
-                        <div>
-                            <h4>Mohamed algamal</h4>
+            <t t-call="shop_phone.custom_header_footer_sales_report">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-12" style="padding-bottom:10px">
+                            <h5>Reference :
+                                <span t-esc="form['ref']"/>
+                            </h5>
+                            <h5>History :
+                                <span t-out="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y %I: %M %P')"/>
+                            </h5>
                         </div>
                     </div>
-                </t>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-striped">
+                                <thead class="text-center fw-bold" style="border-bottom: 1px solid black;">
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Category</td>
+                                        <td>Count</td>
+                                        <td>Price</td>
+                                        <td>SubTotal</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="record" t-as="rec">
+                                        <tr>
+                                            <td t-esc="rec['name']"/>
+                                            <td t-esc="rec['category']"/>
+                                            <td t-esc="rec['count']"/>
+                                            <td t-esc="rec['price']"/>
+                                            <td t-esc="rec['subtotal']"/>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="fw-bold">
+                                        <td colspan="3"/>
+                                        <td>Total</td>
+                                        <td t-esc="form['total']"/>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </t>
         </t>
     </template>

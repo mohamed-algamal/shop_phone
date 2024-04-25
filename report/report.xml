@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- create paper format-->
+    <!--     create paper format-->
     <record id="paperformat_sales_card" model="report.paperformat">
         <field name="name">Sales Card Paper Format</field>
-        <field name="format">B7</field>
+        <field name="format">A5</field>
         <field name="default" eval="True"/>
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
         <field name="margin_top">40</field>
-        <field name="margin_bottom">32</field>
+        <field name="margin_bottom">25</field>
         <field name="margin_left">7</field>
         <field name="margin_right">7</field>
         <field name="header_line" eval="False"/>
@@ -26,6 +26,7 @@
         <field name="report_file">shop_phone.report_sales_card_id</field>
         <field name="binding_model_id" ref="model_sales"/> <!-- where you will add the report -->
         <field name="binding_type">report</field>
+        <!--<field name="binding_view_types"></field>-->
         <field name="paperformat_id" ref="shop_phone.paperformat_sales_card"/>
     </record>
 

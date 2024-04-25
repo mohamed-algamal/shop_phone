@@ -130,6 +130,10 @@ class Sales(models.Model):
             raise ValidationError(_("You should inter the number above zero in count field."))
 
     def action_done(self):
+        for rec in self:
+            if rec.total == 0:
+                raise ValidationError(_("Total field shouldn't be equal zero."))
+
         for rec in self.sales_accessories_ids:
             self._check_count(rec)
 
@@ -144,10 +148,6 @@ class Sales(models.Model):
 
         for rec in self.sales_petrine_work_ids:
             self._check_count(rec)
-
-        for rec in self:
-            if rec.total == 0:
-                raise ValidationError(_("Total field shouldn't be equal zero."))
 
         for rec in self.sales_accessories_ids:
             rec.accessories_id.count -= rec.count
@@ -170,6 +170,65 @@ class Sales(models.Model):
 
         self.message_post(body=f'The sale is done with total {self.total}.', message_type='comment',
                           subtype_xmlid='mail.mt_note', )
+
+    def action_print(self):
+        record = []
+        if self.sales_accessories_ids:
+            for rec in self.sales_accessories_ids:
+                x = {
+                    'name': rec.accessories_id.name,
+                    'category': rec.accessories_id.accessories,
+                    'price': rec.price,
+                    'count': rec.count,
+                    'subtotal': rec.sup_total,
+                }
+                record.append(x)
+        if self.sales_internal_ids:
+            for rec in self.sales_internal_ids:
+                x = {
+                    'name': rec.internal_id.name,
+                    'category': rec.internal_id.internal,
+                    'price': rec.price,
+                    'count': rec.count,
+                    'subtotal': rec.sup_total,
+                }
+                record.append(x)
+        if self.sales_mobiles_ids:
+            for rec in self.sales_mobiles_ids:
+                x = {
+                    'name': rec.mobiles_id.name,
+                    'category': rec.mobiles_id.mobiles,
+                    'price': rec.price,
+                    'count': rec.count,
+                    'subtotal': rec.sup_total,
+                }
+                record.append(x)
+        if self.sales_electricity_ids:
+            for rec in self.sales_electricity_ids:
+                x = {
+                    'name': rec.electricity_id.name,
+                    'category': rec.electricity_id.electricity,
+                    'price': rec.price,
+                    'count': rec.count,
+                    'subtotal': rec.sup_total,
+                }
+                record.append(x)
+        if self.sales_petrine_work_ids:
+            for rec in self.sales_petrine_work_ids:
+                x = {
+                    'name': rec.petrine_work_id.name,
+                    'category': rec.petrine_work_id.petrine_work,
+                    'price': rec.price,
+                    'count': rec.count,
+                    'subtotal': rec.sup_total,
+                }
+                record.append(x)
+        data = {
+            'form': self.read()[0],
+            'record': record,
+        }
+        # external id for report action
+        return self.env.ref('shop_phone.report_sales_card').report_action(self, data=data)
 
 
 class SalesAccessories(models.Model):
@@ -199,7 +258,7 @@ class SalesAccessories(models.Model):
         for rec in self:
             rec.price = rec.accessories_id.price
 
-    @api.depends('accessories_id')
+    @api.depends('accessories_id', 'accessories_id.count')
     def _compute_count_found(self):
         for rec in self:
             rec.count_found = rec.accessories_id.count
@@ -236,7 +295,7 @@ class SalesElectricity(models.Model):
         for rec in self:
             rec.price = rec.electricity_id.price
 
-    @api.depends('electricity_id')
+    @api.depends('electricity_id', 'electricity_id.count')
     def _compute_count_found(self):
         for rec in self:
             rec.count_found = rec.electricity_id.count
@@ -269,7 +328,7 @@ class SalesInternal(models.Model):
         for rec in self:
             rec.price = rec.internal_id.price
 
-    @api.depends('internal_id')
+    @api.depends('internal_id', 'internal_id.count')
     def _compute_count_found(self):
         for rec in self:
             rec.count_found = rec.internal_id.count
@@ -302,7 +361,7 @@ class SalesMobiles(models.Model):
         for rec in self:
             rec.price = rec.mobiles_id.price
 
-    @api.depends('mobiles_id')
+    @api.depends('mobiles_id', 'mobiles_id.count')
     def _compute_count_found(self):
         for rec in self:
             rec.count_found = rec.mobiles_id.count
@@ -335,7 +394,7 @@ class SalesPetrineWork(models.Model):
         for rec in self:
             rec.price = rec.petrine_work_id.price
 
-    @api.depends('petrine_work_id')
+    @api.depends('petrine_work_id', 'petrine_work_id.count')
     def _compute_count_found(self):
         for rec in self:
             rec.count_found = rec.petrine_work_id.count

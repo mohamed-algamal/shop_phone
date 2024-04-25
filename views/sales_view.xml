@@ -27,6 +27,8 @@
                     <field name="state" widget="statusbar" nolabel="1"/>
                     <button name="action_done" string="Done" type="object" class="oe_highlight" icon="fa-check"
                             data-hotkey="z" invisible="state == 'done'" confirm="Are you sure for make done?"/>
+                    <button name="action_print" string="Print" type="object" icon="fa-print"
+                            data-hotkey="z" invisible="state != 'done'" confirm="Are you sure print this record?"/>
                 </header>
                 <sheet>
                     <group>

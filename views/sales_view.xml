@@ -189,7 +189,7 @@
                 <!-- chatter -->
                 <div class="oe_chatter">
                     <field name="message_follower_ids" groups="base.group_user"/> <!-- inherit = ['mail.thread'] -->
-                    <field name="activity_ids"/> <!-- inherit = ['mail.activity.mixin'] -->
+                    <!--<field name="activity_ids"/> &lt;!&ndash; inherit = ['mail.activity.mixin'] &ndash;&gt;-->
                     <field name="message_ids"/> <!-- inherit = ['mail.thread'] -->
                 </div>
             </form>

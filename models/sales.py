@@ -7,6 +7,7 @@ class Sales(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Sales'
     _order = 'id desc'
+    _rec_name = 'ref'
 
     ref = fields.Char(string='Reference', readonly=True)
     total = fields.Float(string='Total', compute='_compute_total', readonly=True, store=True)
@@ -21,6 +22,13 @@ class Sales(models.Model):
         ('prepare', 'Prepare'),
         ('done', 'Done')], string='State', default='prepare'
     )
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        print(default)
+        if default is None:
+            default = {}
+        return super(Sales, self).copy(default)
 
     @api.depends('sales_accessories_ids', 'sales_electricity_ids', 'sales_internal_ids', 'sales_mobiles_ids',
                  'sales_petrine_work_ids')
@@ -84,35 +92,40 @@ class Sales(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals['sales_accessories_ids']:
-            list_id = []
-            for rec in vals['sales_accessories_ids']:
-                list_id.append(rec[2].get('accessories_id'))
-            self.check_duplicates(list_id)
+        if 'sales_accessories_ids' in vals:
+            if vals['sales_accessories_ids']:
+                list_id = []
+                for rec in vals['sales_accessories_ids']:
+                    list_id.append(rec[2].get('accessories_id'))
+                self.check_duplicates(list_id)
 
-        if vals['sales_electricity_ids']:
-            list_id = []
-            for rec in vals['sales_electricity_ids']:
-                list_id.append(rec[2].get('electricity_id'))
-            self.check_duplicates(list_id)
+        if 'sales_electricity_ids' in vals:
+            if vals['sales_electricity_ids']:
+                list_id = []
+                for rec in vals['sales_electricity_ids']:
+                    list_id.append(rec[2].get('electricity_id'))
+                self.check_duplicates(list_id)
 
-        if vals['sales_internal_ids']:
-            list_id = []
-            for rec in vals['sales_internal_ids']:
-                list_id.append(rec[2].get('internal_id'))
-            self.check_duplicates(list_id)
+        if 'sales_internal_ids' in vals:
+            if vals['sales_internal_ids']:
+                list_id = []
+                for rec in vals['sales_internal_ids']:
+                    list_id.append(rec[2].get('internal_id'))
+                self.check_duplicates(list_id)
 
-        if vals['sales_mobiles_ids']:
-            list_id = []
-            for rec in vals['sales_mobiles_ids']:
-                list_id.append(rec[2].get('mobiles_id'))
-            self.check_duplicates(list_id)
+        if 'sales_mobiles_ids' in vals:
+            if vals['sales_mobiles_ids']:
+                list_id = []
+                for rec in vals['sales_mobiles_ids']:
+                    list_id.append(rec[2].get('mobiles_id'))
+                self.check_duplicates(list_id)
 
-        if vals['sales_petrine_work_ids']:
-            list_id = []
-            for rec in vals['sales_petrine_work_ids']:
-                list_id.append(rec[2].get('petrine_work_id'))
-            self.check_duplicates(list_id)
+        if 'sales_petrine_work_ids' in vals:
+            if vals['sales_petrine_work_ids']:
+                list_id = []
+                for rec in vals['sales_petrine_work_ids']:
+                    list_id.append(rec[2].get('petrine_work_id'))
+                self.check_duplicates(list_id)
 
         vals['ref'] = self.env['ir.sequence'].next_by_code('sales')
         return super(Sales, self).create(vals)
@@ -169,9 +182,9 @@ class Sales(models.Model):
             rec.is_done = True
 
         self.message_post(body=f'The sale is done with total {self.total}.', message_type='comment',
-                          subtype_xmlid='mail.mt_note', )
+                          subtype_xmlid='mail.mt_note',)
 
-    def action_print(self):
+    def action_print(self): 
         record = []
         if self.sales_accessories_ids:
             for rec in self.sales_accessories_ids:

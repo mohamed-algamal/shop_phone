@@ -24,7 +24,7 @@
         <field name="report_type">qweb-pdf</field>  <!-- type of report -->
         <field name="report_name">shop_phone.report_sales_card_id</field>
         <field name="report_file">shop_phone.report_sales_card_id</field>
-        <field name="binding_model_id" ref="model_sales"/> <!-- where you will add the report -->
+        <!--<field name="binding_model_id" ref="model_sales"/> &lt;!&ndash; where you will add the report &ndash;&gt;-->
         <field name="binding_type">report</field>
         <!--<field name="binding_view_types"></field>-->
         <field name="paperformat_id" ref="shop_phone.paperformat_sales_card"/>

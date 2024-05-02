@@ -17,3 +17,6 @@ class Mobiles(models.Model):
         vals['ref'] = self.env['ir.sequence'].next_by_code('mobiles')
         return super(Mobiles, self).create(vals)
 
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = f"{rec.name} ({rec.mobiles})"

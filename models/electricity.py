@@ -27,3 +27,6 @@ class Electricity(models.Model):
         vals['ref'] = self.env['ir.sequence'].next_by_code('electricity')
         return super(Electricity, self).create(vals)
 
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = f"{rec.name} ({rec.electricity})"

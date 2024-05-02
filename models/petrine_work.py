@@ -18,3 +18,6 @@ class PetrineWork(models.Model):
         vals['ref'] = self.env['ir.sequence'].next_by_code('petrine_work')
         return super(PetrineWork, self).create(vals)
 
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = f"{rec.name} ({rec.petrine_work})"

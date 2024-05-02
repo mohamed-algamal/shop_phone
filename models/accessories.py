@@ -16,3 +16,7 @@ class Accessories(models.Model):
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('accessories')
         return super(Accessories, self).create(vals)
+
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = f"{rec.name} ({rec.accessories})"

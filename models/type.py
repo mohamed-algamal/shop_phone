@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 class Type(models.Model):
     _name = 'type'
     _description = 'Type'
+    _rec_names_search = ['name', 'ref']
 
     name = fields.Char(string="Name", required=True)
     ref = fields.Char(string='Reference', readonly=True)

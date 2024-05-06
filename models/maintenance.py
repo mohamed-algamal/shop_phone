@@ -6,6 +6,8 @@ class Maintenance(models.Model):
     _name = 'maintenance'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Maintenance'
+    _rec_name = 'ref'
+    _order = 'id desc'
 
     ref = fields.Char(string='Reference', readonly=True)
     price = fields.Float(string='Price', required=True)
@@ -18,11 +20,14 @@ class Maintenance(models.Model):
     description = fields.Text(string='description')
     phone = fields.Char(string="Phone")
     email = fields.Char(string="Email")
+    client_name = fields.Char(string="Client Name")
 
     @api.model
     def create(self, vals):
         vals['ref'] = self.env['ir.sequence'].next_by_code('maintenance')
-        return super(Maintenance, self).create(vals)
+        rec = super(Maintenance, self).create(vals)
+        self.env['sales'].create({'maintenance_id': rec.id, 'state': 'prepare', 'is_maintenance_record': True})
+        return rec
 
     def action_draft(self):
         for rec in self:
@@ -35,7 +40,34 @@ class Maintenance(models.Model):
     def action_done(self):
         for rec in self:
             rec.state = 'done'
+            sales = self.env['sales'].search([('maintenance_id', '=', self.id)])
+            if sales:
+                sales.action_done()
 
     def action_cancel(self):
         for rec in self:
             rec.state = 'cancel'
+            sales = self.env['sales'].search([('maintenance_id', '=', self.id)])
+            if sales:
+                sales.action_cancel()
+
+    def action_print(self):
+        data = {}
+        sales = self.env['sales'].search([('maintenance_id', '=', self.id)])
+        if sales:
+            data = sales.print_report()
+        print(data)
+        data.update({'maintenance': self.read()[0]})
+        print(data)
+        # external id for report action
+        return self.env.ref('shop_phone.report_maintenance_card').report_action(self, data=data)
+
+    def action_sales(self):
+        sales = self.env['sales'].search([('maintenance_id', '=', self.id)])
+        return {
+            'view_mode': 'form',
+            'res_model': 'sales',
+            'res_id': sales.id,
+            'target': 'new',  # current and new and inline
+            'type': 'ir.actions.act_window',
+        }

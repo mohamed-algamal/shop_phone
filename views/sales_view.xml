@@ -5,12 +5,14 @@
         <field name="name">sales.tree</field>
         <field name="model">sales</field>
         <field name="arch" type="xml">
-            <tree decoration-danger="state == 'prepare'" decoration-success="state == 'done'">
+            <tree decoration-danger="state == 'cancel'" decoration-warning="state == 'prepare'" decoration-success="state == 'done'">
                 <field name="ref"/>
                 <field name="total"/>
                 <field name="is_done" column_invisible="1"/>
-                <field name="state" widget="badge" decoration-danger="state == 'prepare'"
-                       decoration-success="state == 'done'"/>
+                <field name="is_cancel" column_invisible="1"/>
+                <field name="is_maintenance_record" column_invisible="1"/>
+                <field name="state" widget="badge" decoration-danger="state == 'cancel'"
+                       decoration-warning="state == 'prepare'" decoration-success="state == 'done'"/>
             </tree>
         </field>
     </record>
@@ -24,11 +26,13 @@
                 <!-- create statusbar -->
                 <header>
                     <!--options="{'clickable': '1'}" give you ability for click in the statusbar-->
-                    <field name="state" widget="statusbar" nolabel="1"/>
+                    <field name="state" widget="statusbar" statusbar_visible="prepare,done" nolabel="1"/>
                     <button name="action_done" string="Done" type="object" class="oe_highlight" icon="fa-check"
-                            data-hotkey="z" invisible="state == 'done'" confirm="Are you sure for make done?"/>
+                            data-hotkey="z" invisible="state in ['done', 'cancel'] or is_maintenance_record == True" confirm="Are you sure for make done?"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" icon="fa-times"
+                            data-hotkey="h" invisible="state in ['done', 'cancel'] or is_maintenance_record == True" confirm="Are you sure for make cancel?"/>
                     <button name="action_print" string="Print" type="object" icon="fa-print"
-                            data-hotkey="z" invisible="state != 'done'" confirm="Are you sure print this record?"/>
+                            data-hotkey="a" invisible="state != 'done' or is_maintenance_record == True"/>
                 </header>
                 <sheet>
                     <group>
@@ -49,16 +53,21 @@
                             </div>
                             <field name="state" invisible="1"/>
                             <field name="is_done" invisible="1"/>
+                            <field name="is_cancel" invisible="1"/>
+                            <field name="is_maintenance_record" invisible="1"/>
+                            <field name="maintenance_id" invisible="1"/>
                         </group>
                         <notebook>
                             <page string="Sales Accessories" name="sales_accessories">
-                                <field name="sales_accessories_ids" readonly="is_done">
+                                <field name="sales_accessories_ids" readonly="is_done or is_cancel">
                                     <tree editable="bottom">
                                         <field name="accessories_id"/>
                                         <field name="category"/>
                                         <field name="count"/>
-                                        <field name="count_found" column_invisible="parent.is_done, '==', True"/>
+                                        <field name="count_found" column_invisible="parent.is_done, '==', True"
+                                               decoration-danger="check_count"/>
                                         <field name="price"/>
+                                        <field name="check_count" column_invisible="1"/>
                                         <field name="sup_total"/>
                                     </tree>
                                     <form>
@@ -67,7 +76,7 @@
                                                 <field name="accessories_id"/>
                                                 <field name="category"/>
                                                 <field name="count_found"
-                                                       column_invisible="parent.is_done, '==', True"/>
+                                                       invisible="parent.is_done, '==', True"/>
                                             </group>
                                             <group>
                                                 <field name="count"/>
@@ -80,13 +89,15 @@
                             </page>
 
                             <page string="Sales Electricity" name="sales_electricity">
-                                <field name="sales_electricity_ids" readonly="is_done">
+                                <field name="sales_electricity_ids" readonly="is_done or is_cancel">
                                     <tree editable="bottom">
                                         <field name="electricity_id"/>
                                         <field name="category"/>
                                         <field name="count"/>
-                                        <field name="count_found"/>
+                                        <field name="count_found" column_invisible="parent.is_done, '==', True"
+                                               decoration-danger="check_count"/>
                                         <field name="price"/>
+                                        <field name="check_count" column_invisible="1"/>
                                         <field name="sup_total"/>
                                     </tree>
                                     <form>
@@ -94,7 +105,7 @@
                                             <group>
                                                 <field name="electricity_id"/>
                                                 <field name="category"/>
-                                                <field name="count_found"/>
+                                                <field name="count_found" invisible="parent.is_done, '==', True"/>
                                             </group>
                                             <group>
                                                 <field name="count"/>
@@ -106,13 +117,15 @@
                                 </field>
                             </page>
                             <page string="Sales Internal" name="sales_internal">
-                                <field name="sales_internal_ids" readonly="is_done">
+                                <field name="sales_internal_ids" readonly="is_done or is_cancel">
                                     <tree editable="bottom">
                                         <field name="internal_id"/>
                                         <field name="category"/>
                                         <field name="count"/>
-                                        <field name="count_found"/>
+                                        <field name="count_found" column_invisible="parent.is_done, '==', True"
+                                               decoration-danger="check_count"/>
                                         <field name="price"/>
+                                        <field name="check_count" column_invisible="1"/>
                                         <field name="sup_total"/>
                                     </tree>
                                     <form>
@@ -120,7 +133,7 @@
                                             <group>
                                                 <field name="internal_id"/>
                                                 <field name="category"/>
-                                                <field name="count_found"/>
+                                                <field name="count_found" invisible="parent.is_done, '==', True"/>
                                             </group>
                                             <group>
                                                 <field name="count"/>
@@ -132,13 +145,15 @@
                                 </field>
                             </page>
                             <page string="Sales Mobiles" name="sales_mobiles">
-                                <field name="sales_mobiles_ids" readonly="is_done">
+                                <field name="sales_mobiles_ids" readonly="is_done or is_cancel">
                                     <tree editable="bottom">
                                         <field name="mobiles_id"/>
                                         <field name="category"/>
                                         <field name="count"/>
-                                        <field name="count_found"/>
+                                        <field name="count_found" column_invisible="parent.is_done, '==', True"
+                                               decoration-danger="check_count"/>
                                         <field name="price"/>
+                                        <field name="check_count" column_invisible="1"/>
                                         <field name="sup_total"/>
                                     </tree>
                                     <form>
@@ -146,7 +161,7 @@
                                             <group>
                                                 <field name="mobiles_id"/>
                                                 <field name="category"/>
-                                                <field name="count_found"/>
+                                                <field name="count_found" invisible="parent.is_done, '==', True"/>
                                             </group>
                                             <group>
                                                 <field name="count"/>
@@ -158,13 +173,15 @@
                                 </field>
                             </page>
                             <page string="Sales Petrine Work" name="sales_petrine_work">
-                                <field name="sales_petrine_work_ids" readonly="is_done">
+                                <field name="sales_petrine_work_ids" readonly="is_done or is_cancel">
                                     <tree editable="bottom">
                                         <field name="petrine_work_id"/>
                                         <field name="category"/>
                                         <field name="count"/>
-                                        <field name="count_found"/>
+                                        <field name="count_found" column_invisible="parent.is_done, '==', True"
+                                               decoration-danger="check_count"/>
                                         <field name="price"/>
+                                        <field name="check_count" column_invisible="1"/>
                                         <field name="sup_total"/>
                                     </tree>
                                     <form>
@@ -172,7 +189,7 @@
                                             <group>
                                                 <field name="petrine_work_id"/>
                                                 <field name="category"/>
-                                                <field name="count_found"/>
+                                                <field name="count_found" invisible="parent.is_done, '==', True"/>
                                             </group>
                                             <group>
                                                 <field name="count"/>

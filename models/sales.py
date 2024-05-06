@@ -12,6 +12,9 @@ class Sales(models.Model):
     ref = fields.Char(string='Reference', readonly=True)
     total = fields.Float(string='Total', compute='_compute_total', readonly=True, store=True)
     is_done = fields.Boolean(string='Is Done', readonly=True)
+    is_cancel = fields.Boolean(string='Is Cancel', readonly=True)
+    maintenance_id = fields.Many2one('maintenance', string="Maintenance")
+    is_maintenance_record = fields.Boolean(string='Is Maintenance')
 
     sales_accessories_ids = fields.One2many('sales.accessories', 'sales_id', string='Sales Accessories')
     sales_electricity_ids = fields.One2many('sales.electricity', 'sales_id', string='Sales Electricity')
@@ -20,12 +23,12 @@ class Sales(models.Model):
     sales_petrine_work_ids = fields.One2many('sales.petrine.work', 'sales_id', string='Sales Petrine Work')
     state = fields.Selection([
         ('prepare', 'Prepare'),
-        ('done', 'Done')], string='State', default='prepare'
+        ('done', 'Done'),
+        ('cancel', 'Cancel')], string='State', default='prepare'
     )
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
-        print(default)
         if default is None:
             default = {}
         return super(Sales, self).copy(default)
@@ -134,6 +137,8 @@ class Sales(models.Model):
         for rec in self:
             if rec.state == "done":
                 raise ValidationError(_("You can't delete done records."))
+            if rec.is_maintenance_record:
+                raise ValidationError(_("This sales record have maintenance record."))
         return super(Sales, self).unlink()
 
     def _check_count(self, rec):
@@ -144,7 +149,7 @@ class Sales(models.Model):
 
     def action_done(self):
         for rec in self:
-            if rec.total == 0:
+            if rec.total == 0 and not rec.is_maintenance_record:
                 raise ValidationError(_("Total field shouldn't be equal zero."))
 
         for rec in self.sales_accessories_ids:
@@ -184,7 +189,12 @@ class Sales(models.Model):
         self.message_post(body=f'The sale is done with total {self.total}.', message_type='comment',
                           subtype_xmlid='mail.mt_note',)
 
-    def action_print(self): 
+    def action_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'
+            rec.is_cancel = True
+
+    def print_report(self):
         record = []
         if self.sales_accessories_ids:
             for rec in self.sales_accessories_ids:
@@ -240,6 +250,10 @@ class Sales(models.Model):
             'form': self.read()[0],
             'record': record,
         }
+        return data
+
+    def action_print(self): 
+        data = self.print_report()
         # external id for report action
         return self.env.ref('shop_phone.report_sales_card').report_action(self, data=data)
 
@@ -255,6 +269,15 @@ class SalesAccessories(models.Model):
     price = fields.Float(string='Price', compute='_compute_price', readonly=True, store=True)
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
+    check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+
+    @api.depends('count_found')
+    def _compute_check_count(self):
+        for rec in self:
+            if rec.count_found <= 5:
+                rec.check_count = True
+            else:
+                rec.check_count = False
 
     @api.depends('accessories_id')
     def _compute_category(self):
@@ -292,6 +315,15 @@ class SalesElectricity(models.Model):
     price = fields.Float(string='Price', compute='_compute_price', readonly=True, store=True)
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', readonly=True, store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
+    check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+
+    @api.depends('count_found')
+    def _compute_check_count(self):
+        for rec in self:
+            if rec.count_found <= 5:
+                rec.check_count = True
+            else:
+                rec.check_count = False
 
     @api.depends('electricity_id')
     def _compute_category(self):
@@ -325,6 +357,15 @@ class SalesInternal(models.Model):
     price = fields.Float(string='Price', compute='_compute_price', readonly=True, store=True)
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
+    check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+
+    @api.depends('count_found')
+    def _compute_check_count(self):
+        for rec in self:
+            if rec.count_found <= 5:
+                rec.check_count = True
+            else:
+                rec.check_count = False
 
     @api.depends('internal_id')
     def _compute_category(self):
@@ -358,6 +399,15 @@ class SalesMobiles(models.Model):
     price = fields.Float(string='Price', compute='_compute_price', readonly=True, store=True)
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
+    check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+
+    @api.depends('count_found')
+    def _compute_check_count(self):
+        for rec in self:
+            if rec.count_found <= 5:
+                rec.check_count = True
+            else:
+                rec.check_count = False
 
     @api.depends('mobiles_id')
     def _compute_category(self):
@@ -391,6 +441,15 @@ class SalesPetrineWork(models.Model):
     price = fields.Float(string='Price', compute='_compute_price', readonly=True, store=True)
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
+    check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+
+    @api.depends('count_found')
+    def _compute_check_count(self):
+        for rec in self:
+            if rec.count_found <= 5:
+                rec.check_count = True
+            else:
+                rec.check_count = False
 
     @api.depends('petrine_work_id')
     def _compute_category(self):

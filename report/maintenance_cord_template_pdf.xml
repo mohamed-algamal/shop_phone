@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="custom_header_footer_sales_report">
+    <template id="custom_header_footer_maintenance_report">
         <t t-if="not o" t-set="o" t-value="doc"/>
 
         <t t-if="not company">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="text-center pt-3">
-                <h3>Sales Record</h3>
+                <h3>Sales and maintenance Record</h3>
             </div>
         </div>
 
@@ -42,25 +42,59 @@
         </div>
     </template>
 
-    <template id="report_sales_card_id">
+    <template id="report_maintenance_card_id">
         <t t-call="web.html_container">
-            <t t-call="shop_phone.custom_header_footer_sales_report">
+            <t t-call="shop_phone.custom_header_footer_maintenance_report">
                 <div class="page">
                     <div class="oe_structure"/>
+
                     <div class="row">
                         <div class="row" style="padding-bottom:10px;">
-                            <p class="col-6"><span class="fw-bold">Reference :</span>
-                                <span t-esc="form['ref']"/>
+                            <p class="col-6">
+                                <span class="fw-bold">Reference :</span>
+                                <span t-esc="maintenance['ref']"/>
                             </p>
-                            <p class="col-6"><span class="fw-bold">History :</span>
-                                <span t-out="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y %I: %M %P')"/>
+                            <p class="col-6">
+                                <span class="fw-bold">History :</span>
+                                <span t-out="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y  %I: %M %P')"/>
                             </p>
                         </div>
                     </div>
-                    <div class="pb-2 fs-5">
-                        <span>Details :</span>
-                    </div>
                     <div class="row">
+                        <div class="col-12">
+                            <table class="table table-striped">
+                                <thead class="fw-bold" style="border-bottom: 1px solid black;">
+                                    <tr>
+                                        <td>Client Name</td>
+                                        <td>Phone</td>
+                                        <td t-if="maintenance['description']">description</td>
+                                        <td>Price</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td t-esc="maintenance['client_name']"/>
+                                        <td t-esc="maintenance['phone']"/>
+                                        <td t-if="maintenance['description']" class="text-end" t-esc="maintenance['description']"/>
+                                        <td t-esc="maintenance['price']"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div t-if="record" class="row">
+                        <div class="row pt-4" style="padding-bottom:10px;">
+                            <p class="col-6">
+                                <span class="fw-bold">Reference :</span>
+                                <span t-esc="form['ref']"/>
+                            </p>
+                            <p class="col-6">
+                                <span class="fw-bold">History :</span>
+                                <span t-out="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y  %I: %M %P')"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div t-if="record" class="row">
                         <div class="col-12">
                             <table class="table table-striped">
                                 <thead class="fw-bold" style="border-bottom: 1px solid black;">
@@ -83,15 +117,18 @@
                                         </tr>
                                     </t>
                                 </tbody>
-                                <tfoot>
-                                    <tr class="fw-bold">
-                                        <td colspan="3"/>
-                                        <td>Total</td>
-                                        <td t-esc="form['total']"/>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-12">
+                        <table class="table table-borderless" style="border: 2px solid black;">
+                            <tr class="table-light">
+                                <td>Total</td>
+                                <td class="text-end" t-esc="form['total'] + maintenance['price']"/>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </t>

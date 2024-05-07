@@ -10,6 +10,7 @@ class Sales(models.Model):
     _rec_name = 'ref'
 
     ref = fields.Char(string='Reference', readonly=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
     total = fields.Float(string='Total', compute='_compute_total', readonly=True, store=True)
     is_done = fields.Boolean(string='Is Done', readonly=True)
     is_cancel = fields.Boolean(string='Is Cancel', readonly=True)
@@ -270,6 +271,7 @@ class SalesAccessories(models.Model):
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
     check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
 
     @api.depends('count_found')
     def _compute_check_count(self):
@@ -316,6 +318,7 @@ class SalesElectricity(models.Model):
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', readonly=True, store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
     check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
 
     @api.depends('count_found')
     def _compute_check_count(self):
@@ -358,6 +361,7 @@ class SalesInternal(models.Model):
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
     check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
 
     @api.depends('count_found')
     def _compute_check_count(self):
@@ -400,6 +404,7 @@ class SalesMobiles(models.Model):
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
     check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
 
     @api.depends('count_found')
     def _compute_check_count(self):
@@ -442,6 +447,7 @@ class SalesPetrineWork(models.Model):
     sup_total = fields.Float(string='Sup Total', compute='_compute_sup_total', store=True)
     category = fields.Char(string='Category', compute='_compute_category', readonly=True)
     check_count = fields.Boolean(string='Check Count', compute='_compute_check_count', store=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
 
     @api.depends('count_found')
     def _compute_check_count(self):

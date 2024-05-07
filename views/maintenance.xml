@@ -9,8 +9,9 @@
                   decoration-success="state == 'done'" decoration-danger="state == 'cancel'">
                 <field name="ref"/>
                 <field name="client_name"/>
-                <field name="price"/>
                 <field name="phone"/>
+                <field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="currency_id" column_invisible="1"/>
                 <field name="state" widget="badge" decoration-muted="state == 'draft'"
                        decoration-warning="state  == 'prepare'" decoration-success="state == 'done'"
                        decoration-danger="state == 'cancel'"/>
@@ -55,7 +56,8 @@
                     <group>
                         <group>
                             <field name="client_name" readonly="state in ['done', 'cancel']"/>
-                            <field name="price" readonly="state in ['done', 'cancel']"/>
+                            <field name="price" readonly="state in ['done', 'cancel']" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="phone" widget="phone" readonly="state in ['done', 'cancel']"/>
                             <field name="email" widget="email" readonly="state in ['done', 'cancel']"/>
                         </group>

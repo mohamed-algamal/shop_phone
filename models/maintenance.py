@@ -10,7 +10,8 @@ class Maintenance(models.Model):
     _order = 'id desc'
 
     ref = fields.Char(string='Reference', readonly=True)
-    price = fields.Float(string='Price', required=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
+    price = fields.Float(string='Price')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('prepare', 'Prepare'),
@@ -18,9 +19,9 @@ class Maintenance(models.Model):
         ('cancel', 'Cancel')], string='State', default='draft'
     )
     description = fields.Text(string='description')
-    phone = fields.Char(string="Phone")
+    phone = fields.Char(string="Phone", required=True)
     email = fields.Char(string="Email")
-    client_name = fields.Char(string="Client Name")
+    client_name = fields.Char(string="Client Name", required=True)
 
     @api.model
     def create(self, vals):
@@ -56,9 +57,7 @@ class Maintenance(models.Model):
         sales = self.env['sales'].search([('maintenance_id', '=', self.id)])
         if sales:
             data = sales.print_report()
-        print(data)
         data.update({'maintenance': self.read()[0]})
-        print(data)
         # external id for report action
         return self.env.ref('shop_phone.report_maintenance_card').report_action(self, data=data)
 

@@ -5,9 +5,11 @@
         <field name="name">sales.tree</field>
         <field name="model">sales</field>
         <field name="arch" type="xml">
-            <tree decoration-danger="state == 'cancel'" decoration-warning="state == 'prepare'" decoration-success="state == 'done'">
+            <tree decoration-danger="state == 'cancel'" decoration-warning="state == 'prepare'"
+                  decoration-success="state == 'done'">
                 <field name="ref"/>
-                <field name="total"/>
+                <field name="total" widget="monetary"/>
+                <field name="currency_id" column_invisible="1"/>
                 <field name="is_done" column_invisible="1"/>
                 <field name="is_cancel" column_invisible="1"/>
                 <field name="is_maintenance_record" column_invisible="1"/>
@@ -28,9 +30,11 @@
                     <!--options="{'clickable': '1'}" give you ability for click in the statusbar-->
                     <field name="state" widget="statusbar" statusbar_visible="prepare,done" nolabel="1"/>
                     <button name="action_done" string="Done" type="object" class="oe_highlight" icon="fa-check"
-                            data-hotkey="z" invisible="state in ['done', 'cancel'] or is_maintenance_record == True" confirm="Are you sure for make done?"/>
+                            data-hotkey="z" invisible="state in ['done', 'cancel'] or is_maintenance_record == True"
+                            confirm="Are you sure for make done?"/>
                     <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" icon="fa-times"
-                            data-hotkey="h" invisible="state in ['done', 'cancel'] or is_maintenance_record == True" confirm="Are you sure for make cancel?"/>
+                            data-hotkey="h" invisible="state in ['done', 'cancel'] or is_maintenance_record == True"
+                            confirm="Are you sure for make cancel?"/>
                     <button name="action_print" string="Print" type="object" icon="fa-print"
                             data-hotkey="a" invisible="state != 'done' or is_maintenance_record == True"/>
                 </header>
@@ -48,12 +52,13 @@
                             <div>
                                 <h3>
                                     <label for="total" string="Total"/>
-                                    <field name="total"/>
+                                    <field name="total" widget="monetary"/>
                                 </h3>
                             </div>
                             <field name="state" invisible="1"/>
                             <field name="is_done" invisible="1"/>
                             <field name="is_cancel" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="is_maintenance_record" invisible="1"/>
                             <field name="maintenance_id" invisible="1"/>
                         </group>
@@ -66,9 +71,10 @@
                                         <field name="count"/>
                                         <field name="count_found" column_invisible="parent.is_done, '==', True"
                                                decoration-danger="check_count"/>
-                                        <field name="price"/>
+                                        <field name="price" widget="monetary"/>
                                         <field name="check_count" column_invisible="1"/>
-                                        <field name="sup_total"/>
+                                        <field name="sup_total" widget="monetary"/>
+                                        <field name="currency_id" column_invisible="1"/>
                                     </tree>
                                     <form>
                                         <group>
@@ -80,8 +86,9 @@
                                             </group>
                                             <group>
                                                 <field name="count"/>
-                                                <field name="price"/>
-                                                <field name="sup_total"/>
+                                                <field name="price" widget="monetary"/>
+                                                <field name="sup_total" widget="monetary"/>
+                                                <field name="currency_id" invisible="1"/>
                                             </group>
                                         </group>
                                     </form>
@@ -96,9 +103,10 @@
                                         <field name="count"/>
                                         <field name="count_found" column_invisible="parent.is_done, '==', True"
                                                decoration-danger="check_count"/>
-                                        <field name="price"/>
+                                        <field name="price" widget="monetary"/>
                                         <field name="check_count" column_invisible="1"/>
-                                        <field name="sup_total"/>
+                                        <field name="sup_total" widget="monetary"/>
+                                        <field name="currency_id" column_invisible="1"/>
                                     </tree>
                                     <form>
                                         <group>
@@ -109,8 +117,9 @@
                                             </group>
                                             <group>
                                                 <field name="count"/>
-                                                <field name="price"/>
-                                                <field name="sup_total"/>
+                                                <field name="price" widget="monetary"/>
+                                                <field name="sup_total" widget="monetary"/>
+                                                <field name="currency_id" invisible="1"/>
                                             </group>
                                         </group>
                                     </form>
@@ -124,9 +133,10 @@
                                         <field name="count"/>
                                         <field name="count_found" column_invisible="parent.is_done, '==', True"
                                                decoration-danger="check_count"/>
-                                        <field name="price"/>
+                                        <field name="price" widget="monetary"/>
                                         <field name="check_count" column_invisible="1"/>
-                                        <field name="sup_total"/>
+                                        <field name="sup_total" widget="monetary"/>
+                                        <field name="currency_id" column_invisible="1"/>
                                     </tree>
                                     <form>
                                         <group>
@@ -137,8 +147,9 @@
                                             </group>
                                             <group>
                                                 <field name="count"/>
-                                                <field name="price"/>
-                                                <field name="sup_total"/>
+                                                <field name="price" widget="monetary"/>
+                                                <field name="sup_total" widget="monetary"/>
+                                                <field name="currency_id" invisible="1"/>
                                             </group>
                                         </group>
                                     </form>
@@ -152,9 +163,10 @@
                                         <field name="count"/>
                                         <field name="count_found" column_invisible="parent.is_done, '==', True"
                                                decoration-danger="check_count"/>
-                                        <field name="price"/>
+                                        <field name="price" widget="monetary"/>
                                         <field name="check_count" column_invisible="1"/>
-                                        <field name="sup_total"/>
+                                        <field name="sup_total" widget="monetary"/>
+                                        <field name="currency_id" column_invisible="1"/>
                                     </tree>
                                     <form>
                                         <group>
@@ -165,8 +177,9 @@
                                             </group>
                                             <group>
                                                 <field name="count"/>
-                                                <field name="price"/>
-                                                <field name="sup_total"/>
+                                                <field name="price" widget="monetary"/>
+                                                <field name="sup_total" widget="monetary"/>
+                                                <field name="currency_id" invisible="1"/>
                                             </group>
                                         </group>
                                     </form>
@@ -180,9 +193,10 @@
                                         <field name="count"/>
                                         <field name="count_found" column_invisible="parent.is_done, '==', True"
                                                decoration-danger="check_count"/>
-                                        <field name="price"/>
+                                        <field name="price" widget="monetary"/>
                                         <field name="check_count" column_invisible="1"/>
-                                        <field name="sup_total"/>
+                                        <field name="sup_total" widget="monetary"/>
+                                        <field name="currency_id" column_invisible="1"/>
                                     </tree>
                                     <form>
                                         <group>
@@ -193,8 +207,9 @@
                                             </group>
                                             <group>
                                                 <field name="count"/>
-                                                <field name="price"/>
-                                                <field name="sup_total"/>
+                                                <field name="price" widget="monetary"/>
+                                                <field name="sup_total" widget="monetary"/>
+                                                <field name="currency_id" invisible="1"/>
                                             </group>
                                         </group>
                                     </form>

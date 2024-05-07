@@ -8,6 +8,7 @@ class Type(models.Model):
     _rec_names_search = ['name', 'ref']
 
     name = fields.Char(string="Name", required=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=74)
     ref = fields.Char(string='Reference', readonly=True)
     count = fields.Integer(stirng='count')
     price = fields.Float(string='Price', required=True)

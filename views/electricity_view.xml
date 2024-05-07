@@ -9,7 +9,8 @@
                 <field name="name"/>
                 <field name="ref"/>
                 <field name="electricity"/>
-                <field name="price"/>
+                <field name="price" widget="monetary"/>
+                <field name="currency_id" column_invisible="1"/>
                 <field name="count"/>
                 <field name="check_count" column_invisible="True"/>
             </tree>
@@ -27,7 +28,8 @@
                         <group>
                             <field name="name"/>
                             <field name="electricity"/>
-                            <field name="price"/>
+                            <field name="price" widget="monetary"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="count"/>
                             <field name="check_count" invisible="1"/>
                         </group>

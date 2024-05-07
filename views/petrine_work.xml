@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-       <!-- the tree view = list view -->
+    <!-- the tree view = list view -->
     <record id="view_petrine_work_tree" model="ir.ui.view">
         <field name="name">petrine_work.tree</field>
         <field name="model">petrine.work</field>
@@ -9,7 +9,8 @@
                 <field name="name"/>
                 <field name="ref"/>
                 <field name="petrine_work"/>
-                <field name="price"/>
+                <field name="price" widget="monetary"/>
+                <field name="currency_id" column_invisible="1"/>
                 <field name="count"/>
                 <field name="check_count" column_invisible="True"/>
             </tree>
@@ -27,7 +28,8 @@
                         <group>
                             <field name="name"/>
                             <field name="petrine_work"/>
-                            <field name="price"/>
+                            <field name="price" widget="monetary"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="count"/>
                             <field name="check_count" invisible="1"/>
                         </group>
@@ -46,7 +48,7 @@
         <field name="model">petrine.work</field>
         <field name="arch" type="xml">
             <search>
-              <field name="name" string="Name"
+                <field name="name" string="Name"
                        filter_domain="['|', ('name', 'ilike', self), ('ref', 'ilike', self)]"/>
                 <field name="ref"/>
                 <field name="petrine_work"/>
@@ -61,7 +63,7 @@
             </search>
         </field>
     </record>
-    
+
     <data>
         <!--  window action  -->
         <record id="action_petrine_work" model="ir.actions.act_window">

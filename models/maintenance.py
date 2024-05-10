@@ -70,3 +70,11 @@ class Maintenance(models.Model):
             'target': 'new',  # current and new and inline
             'type': 'ir.actions.act_window',
         }
+
+    # function of email
+    def action_send_email(self):
+        mail_template = self.env.ref('shop_phone.maintenance_mail_template')  # external id for email template
+        for rec in self:
+            if rec.email:
+                # email_values = {'subject': 'Test OM'} # this for enter date static
+                mail_template.send_mail(rec.id, force_send=True)  # force_send=True for send mail immediately

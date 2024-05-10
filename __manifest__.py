@@ -12,6 +12,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/sequence_data.xml',
+        'data/mail_template_maintenance.xml',
         'views/menu_views.xml',
         'views/accessories_view.xml',
         'views/internal_view.xml',

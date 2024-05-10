@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="maintenance_mail_template" model="mail.template">
+            <field name="name">maintenance</field>
+            <field name="model_id" ref="shop_phone.model_maintenance"/>
+            <field name="subject">maintenance - {{ object.ref }}</field> <!-- subject this for enter date dynamic -->
+            <field name="email_from">{{ (object.create_uid.email_formatted or '') }}</field>
+            <field name="email_to">{{ (object.email or '') }}</field>
+            <field name="partner_to">{{ object.write_uid.partner_id.id or False}}</field>
+            <field name="description">template email for maintenance record if is done</field>
+            <field name="body_html" type="html">
+                <div>
+                    <strong>maintenance - <t t-out="object.ref"/> </strong>
+                    Dear <t t-out="object.write_uid.partner_id.name or 'customer'">Brandon Freeman</t>,
+                    <br/>
+                    the maintenance your phone is done "<strong t-out="object.client_name or ''"/>".
+                    <t t-if="user.signature">
+                        <br/>
+                        <t t-out="user.signature or ''">--<br/>Mitchell Admin
+                        </t>
+                    </t>
+                </div>
+            </field>
+            <field name="lang">{{ object.write_uid.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

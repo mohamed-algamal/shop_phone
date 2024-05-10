@@ -1,0 +1,1014 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* shop_phone
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-10 19:26+0000\n"
+"PO-Revision-Date: 2024-05-10 19:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: shop_phone
+#: model:mail.template,body_html:shop_phone.maintenance_mail_template
+msgid ""
+"<div>\n"
+"                    Dear <t t-out=\"object.write_uid.partner_id.name or 'customer'\">Brandon Freeman</t>,\n"
+"                    <br>\n"
+"                    the maintenance your phone is done \"<strong t-out=\"object.client_name or ''\"></strong>\".\n"
+"                    <t t-if=\"user.signature\">\n"
+"                        <br>\n"
+"                        <t t-out=\"user.signature or ''\">--<br>Mitchell Admin\n"
+"                        </t>\n"
+"                    </t>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "<span class=\"fw-bold\">History :</span>"
+msgstr "تاريخ:"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "<span class=\"fw-bold\">Reference :</span>"
+msgstr "الرقم التعرفي:"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "<span>Details :</span>"
+msgstr "التفاصيل:"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_accessories
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__accessories
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__accessories_id
+#: model:ir.ui.menu,name:shop_phone.accessories_menu
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_accessories_search
+msgid "Accessories"
+msgstr "اكسسوارات"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_needaction
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_needaction
+msgid "Action Needed"
+msgstr "الإجراءات المطلوبة"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_ids
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_ids
+msgid "Activities"
+msgstr "الانشطه"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_exception_decoration
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "زخرفة استثناء النشاط"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_state
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_type_icon
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "أيقونة نوع النشاط"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__petrine_work__petrine_work__airpods
+msgid "Airpods"
+msgstr ""
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Are you sure for make cancel?"
+msgstr "هل انت متاكد من الغاء العمليه؟"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Are you sure for make done?"
+msgstr "هل انت متاكد من اتمام العمليه؟"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_attachment_count
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__back
+msgid "Back"
+msgstr "ظهر"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__batteries
+msgid "Batteries"
+msgstr "بطاريات"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__bell
+msgid "Bell"
+msgstr "جرس"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__mobiles__mobiles__buttons_mobiles
+msgid "Buttons Mobiles"
+msgstr "تلفونات بزراير"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__cameras
+msgid "Cameras"
+msgstr "كاميرات"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__maintenance__state__cancel
+#: model:ir.model.fields.selection,name:shop_phone.selection__sales__state__cancel
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Cancel"
+msgstr "إلغاء الأمر"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__category
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__category
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__category
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__category
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__category
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "Category"
+msgstr "صنف"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__charger_head
+msgid "Charger head"
+msgstr "راس شاحن"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_internal__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__check_count
+#: model:ir.model.fields,field_description:shop_phone.field_type__check_count
+msgid "Check Count"
+msgstr "تحقق من العد"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__client_name
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+msgid "Client Name"
+msgstr "اسم العميل"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__company_id
+msgid "Company"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__count
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__count
+#: model:ir.model.fields,field_description:shop_phone.field_internal__count
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__count
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__count
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__count
+#: model:ir.model.fields,field_description:shop_phone.field_type__count
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "Count"
+msgstr "العدد"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__count_found
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__count_found
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__count_found
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__count_found
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__count_found
+msgid "Count Found"
+msgstr "العدد الموجود"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_internal__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__create_uid
+#: model:ir.model.fields,field_description:shop_phone.field_type__create_uid
+msgid "Created by"
+msgstr "تم الإنشاء بواسطة"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_internal__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__create_date
+#: model:ir.model.fields,field_description:shop_phone.field_type__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها في"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_internal__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__currency_id
+#: model:ir.model.fields,field_description:shop_phone.field_type__currency_id
+msgid "Currency"
+msgstr "عملة"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_internal__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_sales__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__display_name
+#: model:ir.model.fields,field_description:shop_phone.field_type__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__maintenance__state__done
+#: model:ir.model.fields.selection,name:shop_phone.selection__sales__state__done
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_search
+msgid "Done"
+msgstr "تمت"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__maintenance__state__draft
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_electricity
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__electricity
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__electricity_id
+#: model:ir.ui.menu,name:shop_phone.electricity_menu
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_electricity_search
+msgid "Electricity"
+msgstr "الكهرباء"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__email
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__flash_reader
+msgid "Flash Reader"
+msgstr "فلاشات Reader"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__flashes
+msgid "Flashes"
+msgstr "فلاشات"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__flatah_power
+msgid "Flatah Power and Volume"
+msgstr "فلاتات باور وفوليم"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__flats
+msgid "Flats"
+msgstr "فلاتات"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_follower_ids
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_follower_ids
+msgid "Followers"
+msgstr "متابعين"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_partner_ids
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__activity_type_icon
+#: model:ir.model.fields,help:shop_phone.field_sales__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__frame
+msgid "Frame"
+msgstr "فريم"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__accessories__accessories__grapes
+msgid "Grapes"
+msgstr "جرابات"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_accessories_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_electricity_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_internal_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_mobiles_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_petrine_work_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_search
+msgid "Group By"
+msgstr "مجموعة حسب"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__hand_free
+msgid "Hand free"
+msgstr "هاند فري"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__hand_iphone
+msgid "Hand iPhone"
+msgstr "هاند ايفون"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__hand_type_c
+msgid "Hand type c"
+msgstr "هاند type c"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__has_message
+#: model:ir.model.fields,field_description:shop_phone.field_sales__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__petrine_work__petrine_work__head_phones
+msgid "Head phones"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__housing
+msgid "Housing"
+msgstr "هاوسينج"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__id
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__id
+#: model:ir.model.fields,field_description:shop_phone.field_internal__id
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__id
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__id
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__id
+#: model:ir.model.fields,field_description:shop_phone.field_sales__id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__id
+#: model:ir.model.fields,field_description:shop_phone.field_type__id
+msgid "ID"
+msgstr "الرقم التعريفي"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_exception_icon
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_exception_icon
+msgid "Icon"
+msgstr "رمز"
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__activity_exception_icon
+#: model:ir.model.fields,help:shop_phone.field_sales__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__message_needaction
+#: model:ir.model.fields,help:shop_phone.field_sales__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__message_has_error
+#: model:ir.model.fields,help:shop_phone.field_sales__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__insulated
+msgid "Insulated"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.actions.act_window,name:shop_phone.action_internal
+#: model:ir.model,name:shop_phone.model_internal
+#: model:ir.model.fields,field_description:shop_phone.field_internal__internal
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__internal_id
+#: model:ir.ui.menu,name:shop_phone.internal_menu
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_internal_search
+msgid "Internal"
+msgstr "الدخلي"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales__is_cancel
+msgid "Is Cancel"
+msgstr "هل تم إلغاؤه"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales__is_done
+msgid "Is Done"
+msgstr "هل تم"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_is_follower
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_is_follower
+msgid "Is Follower"
+msgstr "هل متابع"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales__is_maintenance_record
+msgid "Is Maintenance"
+msgstr "هل الصيانة"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_internal__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__write_uid
+#: model:ir.model.fields,field_description:shop_phone.field_type__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_internal__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__write_date
+#: model:ir.model.fields,field_description:shop_phone.field_type__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: shop_phone
+#: model:ir.actions.act_window,name:shop_phone.action_maintenance
+#: model:ir.model,name:shop_phone.model_maintenance
+#: model:ir.model.fields,field_description:shop_phone.field_sales__maintenance_id
+#: model:ir.ui.menu,name:shop_phone.maintenance_menu
+#: model:ir.ui.menu,name:shop_phone.phone_maintenance_menu
+msgid "Maintenance"
+msgstr "الصيانة"
+
+#. module: shop_phone
+#: model:ir.actions.report,name:shop_phone.report_maintenance_card
+msgid "Maintenance Card"
+msgstr "بطاقة الصيانة"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__memory_cards
+msgid "Memory cards"
+msgstr "كروت ميموري"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_has_error
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_ids
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_ids
+msgid "Messages"
+msgstr "رسائل"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__micro_charger
+msgid "Micro charger"
+msgstr "شواحن ميكرو"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__micro_connectors
+msgid "Micro connectors"
+msgstr "وصلات ميكرو"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__mobile_holder
+msgid "Mobile holder"
+msgstr "حامل موبايل"
+
+#. module: shop_phone
+#: model:ir.actions.act_window,name:shop_phone.action_mobiles
+#: model:ir.model,name:shop_phone.model_mobiles
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__mobiles
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__mobiles_id
+#: model:ir.ui.menu,name:shop_phone.mobiles_menu
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_mobiles_search
+msgid "Mobiles"
+msgstr "التلفونات"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__my_activity_date_deadline
+#: model:ir.model.fields,field_description:shop_phone.field_sales__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__name
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__name
+#: model:ir.model.fields,field_description:shop_phone.field_internal__name
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__name
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__name
+#: model:ir.model.fields,field_description:shop_phone.field_type__name
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_accessories_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_electricity_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_internal_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_mobiles_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_petrine_work_search
+msgid "Name"
+msgstr "الاسم"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__mobiles__mobiles__new_mobiles
+msgid "New Mobiles"
+msgstr "التلفونات الجديده"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_date_deadline
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_summary
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_type_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_needaction_counter
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__message_has_error_counter
+#: model:ir.model.fields,field_description:shop_phone.field_sales__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__message_needaction_counter
+#: model:ir.model.fields,help:shop_phone.field_sales__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__message_has_error_counter
+#: model:ir.model.fields,help:shop_phone.field_sales__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: shop_phone
+#: model:ir.actions.act_window,name:shop_phone.action_petrine_work
+#: model:ir.model,name:shop_phone.model_petrine_work
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__petrine_work
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__petrine_work_id
+#: model:ir.ui.menu,name:shop_phone.petrine_work_menu
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_petrine_work_search
+msgid "Petrine Work"
+msgstr "شغل البترينه"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+msgid "Phone"
+msgstr "تلفون"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__maintenance__state__prepare
+#: model:ir.model.fields.selection,name:shop_phone.selection__sales__state__prepare
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+msgid "Prepare"
+msgstr "اعداد"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__price
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__price
+#: model:ir.model.fields,field_description:shop_phone.field_internal__price
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__price
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__price
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__price
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__price
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__price
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__price
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__price
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__price
+#: model:ir.model.fields,field_description:shop_phone.field_type__price
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "Price"
+msgstr "السعر"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Print"
+msgstr "اطبع"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_accessories__ref
+#: model:ir.model.fields,field_description:shop_phone.field_electricity__ref
+#: model:ir.model.fields,field_description:shop_phone.field_internal__ref
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__ref
+#: model:ir.model.fields,field_description:shop_phone.field_mobiles__ref
+#: model:ir.model.fields,field_description:shop_phone.field_petrine_work__ref
+#: model:ir.model.fields,field_description:shop_phone.field_sales__ref
+#: model:ir.model.fields,field_description:shop_phone.field_type__ref
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Reference"
+msgstr "الرقم التعريفي"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__activity_user_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: shop_phone
+#: model:ir.actions.act_window,name:shop_phone.action_sales_order
+#: model:ir.model,name:shop_phone.model_sales
+#: model:ir.ui.menu,name:shop_phone.sales_menu
+#: model:ir.ui.menu,name:shop_phone.sales_order_menu
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+msgid "Sales"
+msgstr "المبيعات"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_sales_accessories
+#: model:ir.model.fields,field_description:shop_phone.field_sales__sales_accessories_ids
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Sales Accessories"
+msgstr "مبيعات الاكسسورات"
+
+#. module: shop_phone
+#: model:ir.actions.report,name:shop_phone.report_sales_card
+msgid "Sales Card"
+msgstr "بطاقة المبيعات"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_sales_electricity
+#: model:ir.model.fields,field_description:shop_phone.field_sales__sales_electricity_ids
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Sales Electricity"
+msgstr "مبيعات الكهرباء"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_sales_internal
+#: model:ir.model.fields,field_description:shop_phone.field_sales__sales_internal_ids
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Sales Internal"
+msgstr "مبيعات الدواخل"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_sales_mobiles
+#: model:ir.model.fields,field_description:shop_phone.field_sales__sales_mobiles_ids
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Sales Mobiles"
+msgstr "مبيعات الهواتف"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_sales_petrine_work
+#: model:ir.model.fields,field_description:shop_phone.field_sales__sales_petrine_work_ids
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Sales Petrine Work"
+msgstr "مبيعات عمل البيترين"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.custom_header_footer_sales_report
+msgid "Sales Record"
+msgstr "سجل المبيعات"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.custom_header_footer_maintenance_report
+msgid "Sales and maintenance Record"
+msgstr "سجل المبيعات والصيانة"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__accessories__accessories__screens
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__screens
+msgid "Screens"
+msgstr "شاشات"
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_form
+msgid "Send Email"
+msgstr "ارسال بريد الكتروني"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__shipping
+msgid "Shipping"
+msgstr "التسوق"
+
+#. module: shop_phone
+#: model:ir.ui.menu,name:shop_phone.shop_phone_menu
+msgid "Shop phone"
+msgstr "محل تلفونات"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__petrine_work__petrine_work__smart_watch
+msgid "Smart Watch"
+msgstr "ساعات ذكيه"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__state
+#: model:ir.model.fields,field_description:shop_phone.field_sales__state
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_maintenance_search
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_search
+msgid "State"
+msgstr "الحاله"
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__activity_state
+#: model:ir.model.fields,help:shop_phone.field_sales__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+msgid "SubTotal"
+msgstr "الرقم المبدائ"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__suktat
+msgid "Suktat"
+msgstr "سوكتات"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__sup_total
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__sup_total
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__sup_total
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__sup_total
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__sup_total
+msgid "Sup Total"
+msgstr "الرقم المبدائ"
+
+#. module: shop_phone
+#. odoo-python
+#: code:addons/shop_phone/models/sales.py:0
+#, python-format
+msgid "The number of product don't found."
+msgstr "لم يتم العثور على عدد المنتجات"
+
+#. module: shop_phone
+#. odoo-python
+#: code:addons/shop_phone/models/sales.py:0
+#, python-format
+msgid "This sales record have maintenance record."
+msgstr "سجل المبيعات هذا له سجل صيانة"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales__total
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_sales_card_id
+#: model_terms:ir.ui.view,arch_db:shop_phone.view_sales_order_form
+msgid "Total"
+msgstr "الاجمالي"
+
+#. module: shop_phone
+#. odoo-python
+#: code:addons/shop_phone/models/sales.py:0
+#, python-format
+msgid "Total field shouldn't be equal zero."
+msgstr "يجب ألا يساوي حقل الإجمالي صفرا"
+
+#. module: shop_phone
+#: model:ir.model,name:shop_phone.model_type
+#: model:ir.ui.menu,name:shop_phone.type_menu
+msgid "Type"
+msgstr "المخذن"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__type_c_charger
+msgid "Type c charger"
+msgstr "شاحن Type c"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__type_c_connectors
+msgid "Type c connectors"
+msgstr "وصله Type c"
+
+#. module: shop_phone
+#: model:ir.model.fields,help:shop_phone.field_maintenance__activity_exception_decoration
+#: model:ir.model.fields,help:shop_phone.field_sales__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__mobiles__mobiles__used_mobiles
+msgid "Used Mobiles"
+msgstr "تلفونات مستعمله"
+
+#. module: shop_phone
+#. odoo-python
+#: code:addons/shop_phone/models/sales.py:0
+#, python-format
+msgid "You can't delete done records."
+msgstr "لا يمكنك حذف السجلات المنتهي"
+
+#. module: shop_phone
+#. odoo-python
+#: code:addons/shop_phone/models/sales.py:0
+#: code:addons/shop_phone/models/sales.py:0
+#: code:addons/shop_phone/models/sales.py:0
+#: code:addons/shop_phone/models/sales.py:0
+#: code:addons/shop_phone/models/sales.py:0
+#: code:addons/shop_phone/models/sales.py:0
+#, python-format
+msgid "You choose the field two time."
+msgstr "اخترت الحقل مرتين"
+
+#. module: shop_phone
+#. odoo-python
+#: code:addons/shop_phone/models/type.py:0
+#, python-format
+msgid "You should enter the value in price field above zero."
+msgstr "يجب إدخال القيمة في حقل السعر فوق الصفر"
+
+#. module: shop_phone
+#. odoo-python
+#: code:addons/shop_phone/models/sales.py:0
+#, python-format
+msgid "You should inter the number above zero in count field."
+msgstr "يجب عليك ادخال الرقم فوق الصفر في حقل العد"
+
+#. module: shop_phone
+#: model:ir.actions.act_window,name:shop_phone.action_accessories
+msgid "accessories"
+msgstr "اكسسورات"
+
+#. module: shop_phone
+#: model:ir.model.fields.selection,name:shop_phone.selection__accessories__accessories__additions
+#: model:ir.model.fields.selection,name:shop_phone.selection__electricity__electricity__additions
+#: model:ir.model.fields.selection,name:shop_phone.selection__internal__internal__additions
+#: model:ir.model.fields.selection,name:shop_phone.selection__petrine_work__petrine_work__additions
+msgid "additions"
+msgstr "اضافات"
+
+#. module: shop_phone
+#: model_terms:ir.actions.act_window,help:shop_phone.action_petrine_work
+msgid "create new record Petrine Work"
+msgstr "أنشاء تذكره شغل البترينه"
+
+#. module: shop_phone
+#: model_terms:ir.actions.act_window,help:shop_phone.action_electricity
+msgid "create new record electricity"
+msgstr "أنشاء تذكره كهرباء"
+
+#. module: shop_phone
+#: model_terms:ir.actions.act_window,help:shop_phone.action_internal
+msgid "create new record internal"
+msgstr "أنشاء تذكره دواخل"
+
+#. module: shop_phone
+#: model_terms:ir.actions.act_window,help:shop_phone.action_maintenance
+msgid "create new record maintenance"
+msgstr "أنشاء تذكره صيانه"
+
+#. module: shop_phone
+#: model_terms:ir.actions.act_window,help:shop_phone.action_mobiles
+msgid "create new record mobiles"
+msgstr "أنشاء تذكره تلفونات"
+
+#. module: shop_phone
+#: model_terms:ir.actions.act_window,help:shop_phone.action_accessories
+msgid "create the module accessories"
+msgstr "أنشاء تذكره اكسسورات"
+
+#. module: shop_phone
+#: model_terms:ir.actions.act_window,help:shop_phone.action_sales_order
+msgid "create the record sales"
+msgstr "أنشاء تذكره مبيعات"
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_maintenance__description
+#: model_terms:ir.ui.view,arch_db:shop_phone.report_maintenance_card_id
+msgid "description"
+msgstr "وصف"
+
+#. module: shop_phone
+#: model:ir.actions.act_window,name:shop_phone.action_electricity
+msgid "electricity"
+msgstr "الكهرباء"
+
+#. module: shop_phone
+#: model:mail.template,name:shop_phone.maintenance_mail_template
+msgid "maintenance"
+msgstr ""
+
+#. module: shop_phone
+#: model:mail.template,subject:shop_phone.maintenance_mail_template
+msgid "maintenance - {{ object.ref }}"
+msgstr ""
+
+#. module: shop_phone
+#: model:ir.model.fields,field_description:shop_phone.field_sales_accessories__sales_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_electricity__sales_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_internal__sales_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_mobiles__sales_id
+#: model:ir.model.fields,field_description:shop_phone.field_sales_petrine_work__sales_id
+msgid "sales"
+msgstr "المبيعات"
+
+#. module: shop_phone
+#: model:mail.template,description:shop_phone.maintenance_mail_template
+msgid "template email for maintenance record if is done"
+msgstr ""
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.custom_header_footer_maintenance_report
+#: model_terms:ir.ui.view,arch_db:shop_phone.custom_header_footer_sales_report
+msgid "اسد الباغات"
+msgstr ""
+
+#. module: shop_phone
+#: model_terms:ir.ui.view,arch_db:shop_phone.custom_header_footer_maintenance_report
+#: model_terms:ir.ui.view,arch_db:shop_phone.custom_header_footer_sales_report
+msgid "المهندس فون"
+msgstr ""

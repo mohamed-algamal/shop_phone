@@ -41,6 +41,8 @@
                             confirm="Are you sure for make cancel?"/>
                     <button name="action_print" string="Print" type="object" icon="fa-print"
                             data-hotkey="n" invisible="state != 'done'"/>
+                    <button name="action_send_email" string="Send Email" type="object" icon="fa-envelope"
+                            data-hotkey="x" invisible="state != 'done'"/>
                 </header>
                 <sheet>
                     <div name="button_box" class="oe_button_box">

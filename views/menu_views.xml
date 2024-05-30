@@ -3,8 +3,8 @@
     <data>
         <menuitem id="shop_phone_menu"
                   name="Shop phone"
-                  web_icon="om_hospital,static/description/icon.png"
                   sequence="0"/>
+        <!--web_icon="shop_phone/static/description/icon.png"-->
 
         <menuitem id="type_menu"
                   name="Type"

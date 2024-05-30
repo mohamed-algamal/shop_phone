@@ -21,7 +21,7 @@
                     </t>
                 </div>
             </field>
-            <field name="lang">{{ object.write_uid.partner_id.lang }}</field>
+            <field name="lang">{{ object.create_uid.lang }}</field>
             <field name="auto_delete" eval="True"/>
         </record>
     </data>

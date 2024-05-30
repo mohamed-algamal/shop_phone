@@ -59,7 +59,7 @@
                 </group>
                 <!-- create search-panel -->
                 <searchpanel>
-                    <field name="accessories" icon="" select="multi" enable_counters="1"/>
+                    <field name="accessories" icon="fa-mobile" select="multi" enable_counters="1"/>
                 </searchpanel>
             </search>
         </field>

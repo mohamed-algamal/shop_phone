@@ -11,6 +11,7 @@ class Mobiles(models.Model):
         ('used_mobiles', 'Used Mobiles'),
         ('buttons_mobiles', 'Buttons Mobiles')], string='Mobiles', required=True
     )
+    image = fields.Image(string="Image")
 
     @api.model
     def create(self, vals):

@@ -24,6 +24,7 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
                     <group>
                         <group>
                             <field name="name"/>
@@ -39,6 +40,45 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- the kanban view -->
+    <record id="mobiles_view_kanban" model="ir.ui.view">
+        <field name="name">mobiles.kanban</field>
+        <field name="model">mobiles</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <!--<kanban>-->
+                <field name="id"/>
+                <field name="name"/>
+                <field name="image"/>
+                <field name="ref"/>
+                <field name="price"/>
+                <field name="mobiles" readonly="1"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <!-- oe_kanban_global_click for click in kanban view-->
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <field name="image" widget="image" class="o_kanban_image_fill_left"
+                                   options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
+                            <div class="oe_kanban_details">
+                                <strong class="title">
+                                    <field name="name"/>
+                                </strong>
+                                <ul>
+                                    <li>ref:
+                                        <field name="ref"/>
+                                    </li>
+                                    <li>price:
+                                        <field name="price"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
@@ -58,7 +98,7 @@
                 </group>
                 <!-- create search-panel -->
                 <searchpanel>
-                    <field name="mobiles" icon="" select="multi" enable_counters="1"/>
+                    <field name="mobiles" icon="fa-mobile" select="multi" enable_counters="1"/>
                 </searchpanel>
             </search>
         </field>
@@ -70,9 +110,9 @@
             <field name="name">Mobiles</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">mobiles</field>
-            <field name="context">{'search_default_group_by_mobiles': 1}</field>
+            <field name="context">{'search_default_group_by_mobiles': 1, 'group_by': 'mobiles'}</field>
             <!-- domain for condition for make filter many record-->
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
             <field name="help" type="html">
                 <p>
                     create new record mobiles

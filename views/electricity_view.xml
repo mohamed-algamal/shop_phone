@@ -58,7 +58,7 @@
                 </group>
                 <!-- create search-panel -->
                 <searchpanel>
-                    <field name="electricity" icon="" select="multi" enable_counters="1"/>
+                    <field name="electricity" icon="fa-usb" select="multi" enable_counters="1"/>
                 </searchpanel>
             </search>
         </field>
